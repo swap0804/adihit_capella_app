@@ -131,6 +131,9 @@ export type OfficeLocation = {
   address: string;
   phone: string;
   email: string;
+  mapLabel?: string;
+  mapQuery?: string;
+  mapUrl?: string;
 };
 
 export type ChatQuickAction = LinkItem & {

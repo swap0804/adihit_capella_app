@@ -183,7 +183,7 @@ export const serviceCategories: ServiceCategory[] = [
     subtitle: "Strategic direct tax planning and filing support for individuals, founders, and growing companies.",
     summary:
       "Cover return filing, scrutiny support, tax planning, NRI matters, appeals, and high-signal advisory for complex tax questions.",
-    phone: "+91 91440 02997",
+    phone: "+91 84338 80864",
     overview: [
       "Plan filings and advisory with a workflow that reduces last-minute risk and documentation stress.",
       "Create a clearer line of sight across return accuracy, notices, capital gains, and long-term tax efficiency.",
@@ -240,7 +240,7 @@ export const serviceCategories: ServiceCategory[] = [
     subtitle: "GST compliance, reporting, reconciliation, and advisory support built for operating discipline.",
     summary:
       "Streamline GST registration, filings, audits, refunds, ITC advisory, and notice handling with scalable workflows.",
-    phone: "+91 91440 02936",
+    phone: "+91 84338 80864",
     overview: [
       "Reduce compliance friction with a central structure for registration, filing cycles, and documentation readiness.",
       "Support finance teams with cleaner reconciliations, sharper input credit visibility, and faster response handling.",
@@ -297,7 +297,7 @@ export const serviceCategories: ServiceCategory[] = [
     subtitle: "Independent review frameworks that improve reporting confidence and operating trust.",
     summary:
       "Deliver statutory, internal, due diligence, bank, NGO, and process audits that align with real business decisions.",
-    phone: "+91 91440 03015",
+    phone: "+91 84338 80864",
     overview: [
       "Approach audits as strategic visibility tools instead of end-stage compliance burdens.",
       "Support leadership with findings that identify risk, strengthen controls, and clarify next steps.",
@@ -354,7 +354,7 @@ export const serviceCategories: ServiceCategory[] = [
     subtitle: "Reliable accounting support for founders and finance teams that need control without operational drag.",
     summary:
       "Handle monthly books, finalisation, MIS reporting, P&L preparation, and virtual CFO support through structured delivery.",
-    phone: "+91 91440 03029",
+    phone: "+91 84338 80864",
     overview: [
       "Present finance operations as a strategic backbone rather than a back-office obligation.",
       "Support leaders with timely numbers, cleaner reports, and stronger month-end confidence.",
@@ -411,7 +411,7 @@ export const serviceCategories: ServiceCategory[] = [
     subtitle: "Launch-ready advisory for founders building formal, compliant, and investor-aware operating structures.",
     summary:
       "Support company setup, LLP and partnership registrations, startup recognition, trademarking, PAN/TAN, IEC, and more.",
-    phone: "+91 91440 03029",
+    phone: "+91 84338 80864",
     overview: [
       "Guide founders from idea-stage structure decisions to the practical compliance tasks needed for launch.",
       "Use this section to highlight clarity, speed, and confidence during early-stage setup.",
@@ -468,7 +468,7 @@ export const serviceCategories: ServiceCategory[] = [
     subtitle: "Corporate compliance management for companies that need consistency, visibility, and lower execution risk.",
     summary:
       "Manage annual filings, director KYC, LLP filing, share transfer compliance, and corporate change events with confidence.",
-    phone: "+91 91440 02989",
+    phone: "+91 84338 80864",
     overview: [
       "Position governance as a smooth operating system rather than an afterthought.",
       "Keep boards, founders, and finance teams aligned around recurring corporate compliance responsibilities.",
@@ -525,7 +525,7 @@ export const serviceCategories: ServiceCategory[] = [
     subtitle: "Advisory support for growth planning, valuation, funding readiness, and sharper financial decisions.",
     summary:
       "Help organisations plan business setup, project reports, loan/CMA data, financial planning, valuation, cash flow, and budgets.",
-    phone: "+91 91440 02982",
+    phone: "+91 84338 80864",
     overview: [
       "Use this page to communicate strategy, modelling, and decision support for businesses that need more than routine compliance.",
       "Blend commercial clarity with finance discipline across growth, cost, and capital decisions.",
@@ -582,7 +582,7 @@ export const serviceCategories: ServiceCategory[] = [
     subtitle: "Corporate and dispute advisory for businesses operating in regulated, high-stakes, or fast-moving environments.",
     summary:
       "Cover litigation, arbitration, employment, privacy, M&A, restructuring, white collar matters, commercial law, and more.",
-    phone: "+91 91440 01215",
+    phone: "+91 84338 80864",
     overview: [
       "Showcase legal capability with a structure that feels strategic, corporate, and decision-maker friendly.",
       "Connect legal services to transactions, compliance, disputes, labour, data protection, and sector-specific issues.",

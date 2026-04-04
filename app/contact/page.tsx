@@ -2,6 +2,7 @@ import Link from "next/link";
 import { MapPin, Phone, Send } from "lucide-react";
 
 import { ContactForm } from "@/components/contact-form";
+import { OfficeMap } from "@/components/office-map";
 import { PageHero } from "@/components/page-hero";
 import { PlaceholderMedia } from "@/components/placeholder-media";
 import { Reveal } from "@/components/reveal";
@@ -99,14 +100,10 @@ export default function ContactPage() {
       <section className="section-shell">
         <SectionHeading
           eyebrow="Office location"
-          title="A dedicated slot for the office map, building photo, or location visual."
-          description="Swap this placeholder with a live map, custom map graphic, or office exterior once assets are ready."
+          title="Locate the office and make visits easier for clients and partners."
+          description="This section uses the Google Maps Embed API when the env key is available and falls back gracefully while setup is still in progress."
         />
-        <PlaceholderMedia
-          label="Office location map"
-          detail="Map, office photo, or landmark visual placeholder"
-          heightClassName="min-h-[360px]"
-        />
+        <OfficeMap office={office} />
       </section>
 
       <section className="section-shell pt-0">
