@@ -3,6 +3,8 @@ import type { MetadataRoute } from "next";
 import { industryEntries, resourcePosts, serviceCategories } from "@/lib/content";
 import { absoluteUrl } from "@/lib/utils";
 
+export const dynamic = "force-static";
+
 const staticRoutes = [
   "",
   "/about",
