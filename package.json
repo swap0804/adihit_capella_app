@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:static": "npm run build && node scripts/stage-export.mjs",
     "start": "next start",
     "lint": "eslint ."
   },
