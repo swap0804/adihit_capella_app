@@ -5,14 +5,59 @@ import { useState } from "react";
 
 type ContactFormProps = {
   compact?: boolean;
+  source?: string;
 };
 
-export function ContactForm({ compact = false }: ContactFormProps) {
-  const [submitted, setSubmitted] = useState(false);
+type SubmitState = "idle" | "submitting" | "success" | "error";
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+const googleSheetsEndpoint =
+  process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL?.trim() ?? "";
+
+export function ContactForm({
+  compact = false,
+  source = "website",
+}: ContactFormProps) {
+  const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const isConfigured = googleSheetsEndpoint.length > 0;
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+
+    if (!isConfigured) {
+      return;
+    }
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = new URLSearchParams({
+      name: String(formData.get("name") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      phone: String(formData.get("phone") ?? "").trim(),
+      requirement: String(formData.get("requirement") ?? "").trim(),
+      message: String(formData.get("message") ?? "").trim(),
+      userAgent: navigator.userAgent,
+      submittedAt: new Date().toISOString(),
+    });
+
+    setSubmitState("submitting");
+
+    try {
+      await fetch(googleSheetsEndpoint, {
+        method: "POST",
+        mode: "no-cors",
+        body: payload,
+      });
+
+      form.reset();
+      setSubmitState("success");
+    } catch {
+      setSubmitState("error");
+    }
+  }
+
+  function handleReset() {
+    setSubmitState("idle");
   }
 
   return (
@@ -21,6 +66,7 @@ export function ContactForm({ compact = false }: ContactFormProps) {
         <label className="grid gap-2 text-sm text-[var(--muted)]">
           Name
           <input
+            autoComplete="name"
             name="name"
             required
             placeholder="Your name"
@@ -30,6 +76,7 @@ export function ContactForm({ compact = false }: ContactFormProps) {
         <label className="grid gap-2 text-sm text-[var(--muted)]">
           Email
           <input
+            autoComplete="email"
             name="email"
             type="email"
             required
@@ -42,6 +89,8 @@ export function ContactForm({ compact = false }: ContactFormProps) {
         <label className="grid gap-2 text-sm text-[var(--muted)]">
           Phone number
           <input
+            autoComplete="tel"
+            inputMode="tel"
             name="phone"
             placeholder="+91"
             className="rounded-[1.2rem] border border-[rgba(151,201,255,0.16)] bg-[rgba(255,255,255,0.03)] px-4 py-3 text-white outline-none transition focus:border-[var(--brand)]"
@@ -60,6 +109,7 @@ export function ContactForm({ compact = false }: ContactFormProps) {
         Message
         <textarea
           name="message"
+          required
           rows={compact ? 4 : 5}
           placeholder="Tell us about your requirement"
           className="rounded-[1.2rem] border border-[rgba(151,201,255,0.16)] bg-[rgba(255,255,255,0.03)] px-4 py-3 text-white outline-none transition focus:border-[var(--brand)]"
@@ -68,15 +118,37 @@ export function ContactForm({ compact = false }: ContactFormProps) {
       <div className="flex flex-wrap items-center gap-4">
         <button
           type="submit"
-          className="inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
+          disabled={
+            submitState === "submitting" ||
+            submitState === "success" ||
+            !isConfigured
+          }
+          className="inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
         >
-          Submit enquiry
+          {submitState === "submitting"
+            ? "Sending enquiry..."
+            : submitState === "success"
+              ? "Enquiry sent"
+              : "Submit enquiry"}
         </button>
         <span className="text-sm text-[var(--muted)]">
-          {submitted
-            ? "Demo success state active. Connect your email or CRM later."
-            : "Demo form only for now. Add your backend when ready."}
+          {submitState === "success"
+            ? "Thanks. Your enquiry has been added to the Google Sheets pipeline."
+            : submitState === "error"
+              ? "We couldn't send the enquiry right now. Please try again."
+              : isConfigured
+                ? "This form posts directly to your Google Sheets web app."
+                : "Add NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL to enable live enquiry collection."}
         </span>
+        {submitState === "success" ? (
+          <button
+            type="button"
+            onClick={handleReset}
+            className="text-sm font-medium text-[var(--brand)] transition hover:text-white"
+          >
+            Send another enquiry
+          </button>
+        ) : null}
       </div>
     </form>
   );

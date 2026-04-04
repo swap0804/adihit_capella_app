@@ -87,10 +87,10 @@ export default function ContactPage() {
             <div className="surface-card p-6 md:p-8">
               <SectionHeading
                 eyebrow="Enquiry form"
-                title="A reusable form layout ready for backend wiring later."
-                description="For now the form shows a demo success state. You can later connect it to email, CRM, or WhatsApp workflows."
+                title="A reusable enquiry flow that lands directly in Google Sheets."
+                description="This form posts to a Google Apps Script web app so website enquiries can flow straight into your spreadsheet."
               />
-              <ContactForm />
+              <ContactForm source="contact-page" />
             </div>
           </Reveal>
         </div>
