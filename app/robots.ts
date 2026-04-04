@@ -6,13 +6,10 @@ import { absoluteUrl } from "@/lib/utils";
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
-  const crawlPath =
-    siteConfig.basePath === "/" ? "/" : `${siteConfig.basePath}/`;
-
   return {
     rules: siteConfig.searchIndex
-      ? [{ userAgent: "*", allow: crawlPath }]
-      : [{ userAgent: "*", disallow: crawlPath }],
+      ? [{ userAgent: "*", allow: "/" }]
+      : [{ userAgent: "*", disallow: "/" }],
     sitemap: absoluteUrl("/sitemap.xml"),
     host: new URL(siteConfig.siteUrl).origin,
   };

@@ -1,5 +1,3 @@
-import { siteConfig } from "@/lib/site-config";
-
 export function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
@@ -8,30 +6,9 @@ export function getBaseUrl() {
   return process.env.NEXT_PUBLIC_SITE_URL || "https://www.adihitcapella.com";
 }
 
-function normalizePath(path: string) {
-  return path.startsWith("/") ? path : `/${path}`;
-}
-
-export function withBasePath(path = "/") {
-  const normalizedPath = normalizePath(path);
-  const basePath = siteConfig.basePath;
-
-  if (!basePath || basePath === "/") {
-    return normalizedPath;
-  }
-
-  if (
-    normalizedPath === basePath ||
-    normalizedPath.startsWith(`${basePath}/`)
-  ) {
-    return normalizedPath;
-  }
-
-  return normalizedPath === "/" ? basePath : `${basePath}${normalizedPath}`;
-}
-
 export function absoluteUrl(path = "/") {
-  return new URL(withBasePath(path), getBaseUrl()).toString();
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return new URL(normalizedPath, getBaseUrl()).toString();
 }
 
 export function formatDate(date: string) {

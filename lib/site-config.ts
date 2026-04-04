@@ -1,5 +1,4 @@
 import type { ChatQuickAction, NavItem, OfficeLocation } from "@/lib/types";
-import { BASE_PATH } from "@/lib/routing";
 
 export const siteConfig = {
   name: "Adihit Capella",
@@ -7,7 +6,6 @@ export const siteConfig = {
   description:
     "SEO-first legal, tax, finance, and audit consultancy website for Adihit Capella with a futuristic corporate design.",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://www.adihitcapella.com",
-  basePath: BASE_PATH,
   defaultKeywords: [
     "adihit capella",
     "adihit capella ca firm",
