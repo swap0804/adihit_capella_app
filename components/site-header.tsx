@@ -5,6 +5,7 @@ import { Menu, PhoneCall, X } from "lucide-react";
 import { useState } from "react";
 
 import { BrandMark } from "@/components/brand-mark";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/site-config";
 
 export function SiteHeader() {
@@ -28,6 +29,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
+          <ThemeToggle />
           <a
             href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
             className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-2 text-sm text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
@@ -67,6 +69,7 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="mt-4 grid gap-3">
+            <ThemeToggle />
             <a
               href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-3 text-sm text-white"

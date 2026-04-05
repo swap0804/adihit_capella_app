@@ -5,8 +5,14 @@ import { FloatingActions } from "@/components/floating-actions";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
+import { ThemeProvider } from "@/components/theme-provider";
 import { createOrganizationSchema } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
+import {
+  DEFAULT_THEME,
+  getThemeInitScript,
+  THEME_COLORS,
+} from "@/lib/theme";
 
 export const metadata: Metadata = {
   title: {
@@ -18,8 +24,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#04111f",
-  colorScheme: "dark",
+  colorScheme: "dark light",
 };
 
 export default function RootLayout({
@@ -28,15 +33,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      data-theme={DEFAULT_THEME}
+      suppressHydrationWarning
+      style={{ colorScheme: DEFAULT_THEME }}
+    >
+      <head>
+        <meta name="theme-color" content={THEME_COLORS.dark} />
+        <script dangerouslySetInnerHTML={{ __html: getThemeInitScript() }} />
+      </head>
       <body suppressHydrationWarning>
         <StructuredData data={createOrganizationSchema()} />
-        <div className="page-shell">
-          <SiteHeader />
-          <main>{children}</main>
-          <SiteFooter />
-          <FloatingActions />
-        </div>
+        <ThemeProvider>
+          <div className="page-shell">
+            <SiteHeader />
+            <main>{children}</main>
+            <SiteFooter />
+            <FloatingActions />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
