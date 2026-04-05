@@ -48,24 +48,24 @@ export function OfficeMap({ office }: OfficeMapProps) {
   const embedUrl = `https://www.google.com/maps/embed/v1/place?${params.toString()}`;
 
   return (
-    <div className='space-y-4'>
-      <div className='surface-card p-2'>
-        <div className='overflow-hidden rounded-[1.5rem]'>
+    <div className="space-y-4">
+      <div className="surface-card p-2">
+        <div className="overflow-hidden rounded-[1.5rem]">
           <iframe
             title={`${mapLabel} map`}
             src={embedUrl}
-            className='h-[360px] w-full border-0 md:h-[420px]'
-            loading='lazy'
-            referrerPolicy='no-referrer-when-downgrade'
+            className="h-[360px] w-full border-0 md:h-[420px]"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
           />
         </div>
       </div>
       <a
         href={openInMapsUrl}
-        target='https://www.google.com/maps/place/HP+%26+Associates+LLP,+Chartered+Accountants/@19.2042571,73.0052232,21z/data=!4m9!1m2!2m1!1sadihit+capella+private+limited!3m5!1s0x3be7bf7fe02195ef:0xe171903a0a456b8c!8m2!3d19.2043897!4d73.005324!16s%2Fg%2F11pkjfzn7y?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D'
-        rel='noreferrer'
-        className='inline-flex items-center rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-3 text-sm text-[var(--muted)] transition hover:border-[var(--brand)] hover:text-[var(--brand)]'
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex items-center rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-3 text-sm text-[var(--muted)] transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
       >
         Open in Google Maps
       </a>

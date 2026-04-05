@@ -113,27 +113,33 @@ export default function ContactPage() {
           description="These links are wired to placeholder profiles now and can be updated later from the global site config."
         />
         <div className="flex flex-wrap gap-3">
-          <Link
+          <a
             href={siteConfig.social.linkedin}
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-3 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
           >
             <LinkedInIcon className="h-4 w-4" />
             LinkedIn
-          </Link>
-          <Link
+          </a>
+          <a
             href={siteConfig.social.instagram}
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-3 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
           >
             <InstagramIcon className="h-4 w-4" />
             Instagram
-          </Link>
-          <Link
+          </a>
+          <a
             href={siteConfig.social.facebook}
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-3 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
           >
             <FacebookIcon className="h-4 w-4" />
             Facebook
-          </Link>
+          </a>
         </div>
       </section>
     </>

@@ -67,27 +67,33 @@ export function SiteFooter() {
               </div>
             </div>
             <div className="flex gap-3">
-              <Link
+              <a
                 href={siteConfig.social.linkedin}
+                target="_blank"
+                rel="noreferrer"
                 aria-label="LinkedIn"
                 className="rounded-full border border-[rgba(151,201,255,0.18)] p-3 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
               >
                 <LinkedInIcon className="h-4 w-4" />
-              </Link>
-              <Link
+              </a>
+              <a
                 href={siteConfig.social.instagram}
+                target="_blank"
+                rel="noreferrer"
                 aria-label="Instagram"
                 className="rounded-full border border-[rgba(151,201,255,0.18)] p-3 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
               >
                 <InstagramIcon className="h-4 w-4" />
-              </Link>
-              <Link
+              </a>
+              <a
                 href={siteConfig.social.facebook}
+                target="_blank"
+                rel="noreferrer"
                 aria-label="Facebook"
                 className="rounded-full border border-[rgba(151,201,255,0.18)] p-3 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
               >
                 <FacebookIcon className="h-4 w-4" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>

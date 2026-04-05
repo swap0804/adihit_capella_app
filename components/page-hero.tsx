@@ -16,6 +16,10 @@ type PageHeroProps = HeroContent & {
   centered?: boolean;
 };
 
+function isExternalHref(href: string) {
+  return /^(https?:)?\/\//.test(href);
+}
+
 export function PageHero({
   eyebrow,
   title,
@@ -41,21 +45,44 @@ export function PageHero({
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             {cta ? (
-              <Link
-                href={cta.href}
-                className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
-              >
-                {cta.label}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+              isExternalHref(cta.href) ? (
+                <a
+                  href={cta.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
+                >
+                  {cta.label}
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              ) : (
+                <Link
+                  href={cta.href}
+                  className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
+                >
+                  {cta.label}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              )
             ) : null}
             {secondaryCta ? (
-              <Link
-                href={secondaryCta.href}
-                className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.24)] px-5 py-3 text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
-              >
-                {secondaryCta.label}
-              </Link>
+              isExternalHref(secondaryCta.href) ? (
+                <a
+                  href={secondaryCta.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.24)] px-5 py-3 text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+                >
+                  {secondaryCta.label}
+                </a>
+              ) : (
+                <Link
+                  href={secondaryCta.href}
+                  className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.24)] px-5 py-3 text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+                >
+                  {secondaryCta.label}
+                </Link>
+              )
             ) : null}
           </div>
         </div>
@@ -77,21 +104,44 @@ export function PageHero({
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               {cta ? (
-                <Link
-                  href={cta.href}
-                  className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
-                >
-                  {cta.label}
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+                isExternalHref(cta.href) ? (
+                  <a
+                    href={cta.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
+                  >
+                    {cta.label}
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                ) : (
+                  <Link
+                    href={cta.href}
+                    className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
+                  >
+                    {cta.label}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                )
               ) : null}
               {secondaryCta ? (
-                <Link
-                  href={secondaryCta.href}
-                  className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.24)] px-5 py-3 text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
-                >
-                  {secondaryCta.label}
-                </Link>
+                isExternalHref(secondaryCta.href) ? (
+                  <a
+                    href={secondaryCta.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.24)] px-5 py-3 text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+                  >
+                    {secondaryCta.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={secondaryCta.href}
+                    className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.24)] px-5 py-3 text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+                  >
+                    {secondaryCta.label}
+                  </Link>
+                )
               ) : null}
             </div>
             {tags?.length ? (
@@ -127,27 +177,33 @@ export function PageHero({
               <div className="mt-8 flex items-center gap-3 text-[var(--muted)]">
                 <span className="text-sm uppercase tracking-[0.2em]">Follow</span>
                 <div className="flex gap-2">
-                  <Link
+                  <a
                     href={siteConfig.social.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
                     className="rounded-full border border-[rgba(151,201,255,0.18)] p-2 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
                     aria-label="LinkedIn"
                   >
                     <LinkedInIcon className="h-4 w-4" />
-                  </Link>
-                  <Link
+                  </a>
+                  <a
                     href={siteConfig.social.instagram}
+                    target="_blank"
+                    rel="noreferrer"
                     className="rounded-full border border-[rgba(151,201,255,0.18)] p-2 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
                     aria-label="Instagram"
                   >
                     <InstagramIcon className="h-4 w-4" />
-                  </Link>
-                  <Link
+                  </a>
+                  <a
                     href={siteConfig.social.facebook}
+                    target="_blank"
+                    rel="noreferrer"
                     className="rounded-full border border-[rgba(151,201,255,0.18)] p-2 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
                     aria-label="Facebook"
                   >
                     <FacebookIcon className="h-4 w-4" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             ) : null}

@@ -136,10 +136,7 @@ export function ContactForm({
           {submitState === "success"
             ? "Thanks. Your enquiry has been added to the Google Sheets pipeline."
             : submitState === "error"
-              ? "We couldn't send the enquiry right now. Please try again."
-              : isConfigured
-                ? "This form posts directly to your Google Sheets web app."
-                : "Add NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL to enable live enquiry collection."}
+              ? "We couldn't send the enquiry right now. Please try again." : ""}
         </span>
         {submitState === "success" ? (
           <button
