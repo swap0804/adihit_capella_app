@@ -5,31 +5,29 @@ import { Menu, PhoneCall, X } from "lucide-react";
 import { useState } from "react";
 
 import { BrandMark } from "@/components/brand-mark";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/site-config";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 px-3 pt-3">
-      <div className="mx-auto flex max-w-[1240px] items-center justify-between rounded-[1.8rem] border border-[rgba(151,201,255,0.15)] bg-[rgba(4,17,31,0.78)] px-4 py-3 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl md:px-6">
+    <header className="site-header sticky top-0 z-40 px-3 pb-3 pt-0">
+      <div className="mx-auto flex max-w-[1240px] items-center justify-between rounded-b-[1.8rem] rounded-t-none border border-[rgba(151,201,255,0.15)] bg-[rgba(4,17,31,0.78)] px-4 py-3 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl md:px-6">
         <Link href="/" aria-label="Adihit Capella home">
-          <BrandMark />
+          <BrandMark priority />
         </Link>
         <nav className="hidden items-center gap-6 lg:flex">
           {siteConfig.navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm text-[var(--muted)] transition hover:text-[var(--brand)]"
+              className="site-nav-link"
             >
               {item.label}
             </Link>
           ))}
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
-          <ThemeToggle />
           <a
             href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
             className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-2 text-sm text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
@@ -61,7 +59,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-2xl px-4 py-3 text-sm text-[var(--muted)] transition hover:bg-[rgba(255,255,255,0.04)] hover:text-white"
+                className="mobile-nav-link"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
@@ -69,7 +67,6 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="mt-4 grid gap-3">
-            <ThemeToggle />
             <a
               href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-3 text-sm text-white"

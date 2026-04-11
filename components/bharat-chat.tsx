@@ -14,10 +14,11 @@ export function BharatChat() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-3 rounded-full border border-[rgba(151,201,255,0.18)] bg-[rgba(6,16,31,0.9)] px-4 py-3 text-sm text-white shadow-[0_14px_50px_rgba(0,0,0,0.28)] backdrop-blur-xl transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+        className="floating-action floating-action--expert"
+        aria-label="Chat with an Expert"
       >
-        <MessageSquare className="h-4 w-4" />
-        Chat with an Expert
+        <MessageSquare className="h-5 w-5" />
+        <span className="floating-action__label">Chat with an Expert</span>
       </button>
       {open ? (
         <div className="surface-card fixed bottom-6 right-6 z-50 w-[min(360px,calc(100vw-1.5rem))] overflow-hidden">

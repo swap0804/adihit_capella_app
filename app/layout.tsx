@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { createOrganizationSchema } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 import {
+  DEFAULT_THEME_PALETTE,
   DEFAULT_THEME,
   getThemeInitScript,
   THEME_COLORS,
@@ -36,11 +37,15 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme={DEFAULT_THEME}
+      data-palette={DEFAULT_THEME_PALETTE}
       suppressHydrationWarning
       style={{ colorScheme: DEFAULT_THEME }}
     >
       <head>
-        <meta name="theme-color" content={THEME_COLORS.dark} />
+        <meta
+          name="theme-color"
+          content={THEME_COLORS[DEFAULT_THEME_PALETTE][DEFAULT_THEME]}
+        />
         <script dangerouslySetInnerHTML={{ __html: getThemeInitScript() }} />
       </head>
       <body suppressHydrationWarning>

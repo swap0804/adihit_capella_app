@@ -40,3 +40,20 @@ export function FacebookIcon({ className }: SocialIconProps) {
     </svg>
   );
 }
+
+export function WhatsAppIcon({ className }: SocialIconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M5.35 18.65 6.4 15.2A7.1 7.1 0 1 1 9 17.75l-3.65.9Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.25 8.6c.2-.45.4-.5.7-.5h.55c.18 0 .4.04.6.48l.55 1.28c.12.28.08.52-.1.75l-.38.48c.62 1.06 1.48 1.88 2.6 2.45l.5-.62c.2-.26.46-.32.76-.2l1.36.64c.32.15.48.38.42.72-.08.5-.32.93-.72 1.28-.42.36-.93.5-1.55.43-1.44-.14-2.84-.88-4.22-2.22-1.38-1.35-2.17-2.76-2.38-4.23-.08-.58.02-1.06.3-1.44.27-.38.6-.62 1-.7Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}

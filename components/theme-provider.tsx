@@ -10,15 +10,23 @@ import {
 } from "react";
 
 import {
+  DEFAULT_THEME_PALETTE,
   DEFAULT_THEME,
+  getNextThemePalette,
   isThemeMode,
+  resolveThemePalette,
   THEME_COLORS,
+  THEME_PALETTE_STORAGE_KEY,
   THEME_STORAGE_KEY,
+  type ThemePalette,
   type ThemeMode,
 } from "@/lib/theme";
 
 type ThemeContextValue = {
   mounted: boolean;
+  palette: ThemePalette;
+  setPalette: (palette: ThemePalette) => void;
+  togglePalette: () => void;
   theme: ThemeMode;
   setTheme: (theme: ThemeMode) => void;
   toggleTheme: () => void;
@@ -26,16 +34,17 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
-function applyTheme(theme: ThemeMode) {
+function applyTheme(theme: ThemeMode, palette: ThemePalette) {
   const root = document.documentElement;
 
   root.dataset.theme = theme;
+  root.dataset.palette = palette;
   root.style.colorScheme = theme;
 
   const meta = document.querySelector('meta[name="theme-color"]');
 
   if (meta) {
-    meta.setAttribute("content", THEME_COLORS[theme]);
+    meta.setAttribute("content", THEME_COLORS[palette][theme]);
   }
 }
 
@@ -58,29 +67,44 @@ export function ThemeProvider({
 
     return isThemeMode(rootTheme) ? rootTheme : DEFAULT_THEME;
   });
+  const [palette, setPaletteState] = useState<ThemePalette>(() => {
+    if (typeof document === "undefined") {
+      return DEFAULT_THEME_PALETTE;
+    }
+
+    const rootPalette = document.documentElement.dataset.palette;
+
+    return resolveThemePalette(rootPalette);
+  });
 
   useEffect(() => {
     if (!mounted) {
       return;
     }
 
-    applyTheme(theme);
+    applyTheme(theme, palette);
 
     try {
       window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+      window.localStorage.setItem(THEME_PALETTE_STORAGE_KEY, palette);
     } catch {
       // Ignore storage write failures and keep the theme applied for the session.
     }
-  }, [mounted, theme]);
+  }, [mounted, palette, theme]);
 
   useEffect(() => {
     function handleStorage(event: StorageEvent) {
-      if (event.key !== THEME_STORAGE_KEY || !isThemeMode(event.newValue)) {
-        return;
+      if (event.key === THEME_STORAGE_KEY && isThemeMode(event.newValue)) {
+        setThemeState(event.newValue);
+        applyTheme(event.newValue, palette);
       }
 
-      setThemeState(event.newValue);
-      applyTheme(event.newValue);
+      if (event.key === THEME_PALETTE_STORAGE_KEY) {
+        const nextPalette = resolveThemePalette(event.newValue);
+
+        setPaletteState(nextPalette);
+        applyTheme(theme, nextPalette);
+      }
     }
 
     window.addEventListener("storage", handleStorage);
@@ -88,7 +112,13 @@ export function ThemeProvider({
     return () => {
       window.removeEventListener("storage", handleStorage);
     };
-  }, []);
+  }, [palette, theme]);
+
+  function setPalette(nextPalette: ThemePalette) {
+    startTransition(() => {
+      setPaletteState(nextPalette);
+    });
+  }
 
   function setTheme(nextTheme: ThemeMode) {
     startTransition(() => {
@@ -100,8 +130,22 @@ export function ThemeProvider({
     setTheme(theme === "dark" ? "light" : "dark");
   }
 
+  function togglePalette() {
+    setPalette(getNextThemePalette(palette));
+  }
+
   return (
-    <ThemeContext.Provider value={{ mounted, theme, setTheme, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{
+        mounted,
+        palette,
+        setPalette,
+        togglePalette,
+        theme,
+        setTheme,
+        toggleTheme,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

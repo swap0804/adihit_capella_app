@@ -1,19 +1,20 @@
-export function BrandMark() {
+import Image from "next/image";
+
+type BrandMarkProps = {
+  priority?: boolean;
+};
+
+export function BrandMark({ priority = false }: BrandMarkProps) {
   return (
-    <div className="flex items-center gap-3">
-      <div className="brand-mark-panel glow-ring relative grid h-11 w-11 place-items-center rounded-2xl">
-        <span className="text-[var(--text-inverse)] text-lg font-black tracking-[0.2em]">
-          A
-        </span>
-      </div>
-      <div>
-        <p className="text-[0.72rem] uppercase tracking-[0.3em] text-[var(--brand)]">
-          Adihit Capella
-        </p>
-        <p className="text-sm text-[var(--muted)]">
-          Legal, Tax, Audit & Finance Advisory
-        </p>
-      </div>
-    </div>
+    <Image
+      src="/images/adihit-capella-logo.png"
+      alt="Adihit Capella"
+      width={591}
+      height={130}
+      priority={priority}
+      unoptimized
+      sizes="(min-width: 1024px) 238px, (min-width: 640px) 220px, 170px"
+      className="h-auto w-[170px] object-contain sm:w-[220px] lg:w-[238px]"
+    />
   );
 }

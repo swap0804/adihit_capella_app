@@ -1,60 +1,50 @@
 "use client";
 
-import { MoonStar, SunMedium } from "lucide-react";
+import { MoonStar, Palette, SunMedium } from "lucide-react";
 
 import { useTheme } from "@/components/theme-provider";
-import type { ThemeMode } from "@/lib/theme";
+import { getNextThemePalette, THEME_PALETTE_LABELS } from "@/lib/theme";
 
-function ThemeOptionButton({
-  active,
-  disabled,
-  icon,
-  label,
-  onClick,
-}: {
-  active: boolean;
-  disabled: boolean;
-  icon: React.ReactNode;
-  label: string;
-  onClick: () => void;
-}) {
+export function ThemeToggle() {
+  const { mounted, theme, toggleTheme } = useTheme();
+  const isLight = mounted && theme === "light";
+  const Icon = isLight ? MoonStar : SunMedium;
+  const label = isLight ? "Switch to dark theme" : "Switch to light theme";
+
   return (
     <button
       type="button"
-      className={`theme-toggle__button ${active ? "is-active" : ""}`}
-      aria-pressed={active}
-      disabled={disabled}
-      onClick={onClick}
+      className="floating-action floating-action--theme"
+      aria-label={label}
+      disabled={!mounted}
+      onClick={toggleTheme}
     >
-      {icon}
-      <span>{label}</span>
+      <Icon className="h-5 w-5" />
+      <span className="floating-action__label">
+        {isLight ? "Dark theme" : "Light theme"}
+      </span>
     </button>
   );
 }
 
-export function ThemeToggle() {
-  const { mounted, setTheme, theme } = useTheme();
-
-  function selectTheme(nextTheme: ThemeMode) {
-    setTheme(nextTheme);
-  }
+export function ThemePaletteToggle() {
+  const { mounted, palette, togglePalette } = useTheme();
+  const nextPalette = getNextThemePalette(palette);
+  const currentLabel = THEME_PALETTE_LABELS[palette];
+  const nextLabel = THEME_PALETTE_LABELS[nextPalette];
 
   return (
-    <div className="theme-toggle" role="group" aria-label="Theme switcher">
-      <ThemeOptionButton
-        active={mounted && theme === "dark"}
-        disabled={!mounted}
-        icon={<MoonStar className="h-4 w-4" />}
-        label="Dark"
-        onClick={() => selectTheme("dark")}
-      />
-      <ThemeOptionButton
-        active={mounted && theme === "light"}
-        disabled={!mounted}
-        icon={<SunMedium className="h-4 w-4" />}
-        label="Light"
-        onClick={() => selectTheme("light")}
-      />
-    </div>
+    <button
+      type="button"
+      className="floating-action floating-action--palette"
+      aria-label={`Switch color theme to ${nextLabel}`}
+      disabled={!mounted}
+      onClick={togglePalette}
+    >
+      <Palette className="h-5 w-5" />
+      <span className="floating-action__label">
+        {currentLabel} theme
+      </span>
+    </button>
   );
 }

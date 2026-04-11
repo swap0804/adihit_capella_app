@@ -34,7 +34,7 @@ export const siteConfig = {
     { label: 'Industries', href: '/industries' },
     { label: 'Resources', href: '/resources' },
     { label: 'Careers', href: '/careers' },
-    { label: 'Contact Us', href: '/contact' },
+    // { label: 'Contact Us', href: '/contact' },
   ] satisfies NavItem[],
   legalLinks: [
     { label: 'Privacy Policy', href: '/privacy-policy' },
