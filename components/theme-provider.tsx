@@ -6,7 +6,6 @@ import {
   useContext,
   useEffect,
   useState,
-  useSyncExternalStore,
 } from "react";
 
 import {
@@ -53,29 +52,23 @@ export function ThemeProvider({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const mounted = useSyncExternalStore(
-    () => () => undefined,
-    () => true,
-    () => false,
+  const [mounted, setMounted] = useState(false);
+  const [theme, setThemeState] = useState<ThemeMode>(DEFAULT_THEME);
+  const [palette, setPaletteState] = useState<ThemePalette>(
+    DEFAULT_THEME_PALETTE,
   );
-  const [theme, setThemeState] = useState<ThemeMode>(() => {
-    if (typeof document === "undefined") {
-      return DEFAULT_THEME;
-    }
 
-    const rootTheme = document.documentElement.dataset.theme;
+  useEffect(() => {
+    queueMicrotask(() => {
+      const root = document.documentElement;
+      const rootTheme = root.dataset.theme;
+      const rootPalette = root.dataset.palette;
 
-    return isThemeMode(rootTheme) ? rootTheme : DEFAULT_THEME;
-  });
-  const [palette, setPaletteState] = useState<ThemePalette>(() => {
-    if (typeof document === "undefined") {
-      return DEFAULT_THEME_PALETTE;
-    }
-
-    const rootPalette = document.documentElement.dataset.palette;
-
-    return resolveThemePalette(rootPalette);
-  });
+      setThemeState(isThemeMode(rootTheme) ? rootTheme : DEFAULT_THEME);
+      setPaletteState(resolveThemePalette(rootPalette));
+      setMounted(true);
+    });
+  }, []);
 
   useEffect(() => {
     if (!mounted) {

@@ -13,6 +13,14 @@ export type SeoConfig = {
   keywords?: string[];
 };
 
+export type MediaAsset = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+};
+
 export type StatItem = {
   value: string;
   label: string;

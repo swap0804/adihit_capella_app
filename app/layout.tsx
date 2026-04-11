@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 
 import "@/app/globals.css";
 import { FloatingActions } from "@/components/floating-actions";
@@ -46,7 +47,11 @@ export default function RootLayout({
           name="theme-color"
           content={THEME_COLORS[DEFAULT_THEME_PALETTE][DEFAULT_THEME]}
         />
-        <script dangerouslySetInnerHTML={{ __html: getThemeInitScript() }} />
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: getThemeInitScript() }}
+        />
       </head>
       <body suppressHydrationWarning>
         <StructuredData data={createOrganizationSchema()} />

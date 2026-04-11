@@ -11,6 +11,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
 import { createArticleSchema, createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 import { resourcePosts } from "@/lib/content";
+import { getMediaForKeywords } from "@/lib/media";
 import { absoluteUrl, formatDate } from "@/lib/utils";
 
 type ResourceDetailPageProps = {
@@ -56,6 +57,7 @@ export default async function ResourceDetailPage({
   }
 
   const pageUrl = absoluteUrl(`/resources/${post.slug}`);
+  const postMedia = getMediaForKeywords(post.seo.keywords);
 
   return (
     <>
@@ -136,6 +138,7 @@ export default async function ResourceDetailPage({
               label="Article image placeholder"
               detail="Replace with report cover, blog hero image, or editorial artwork."
               heightClassName="min-h-[260px]"
+              media={postMedia}
             />
           </div>
         </div>
@@ -163,6 +166,7 @@ export default async function ResourceDetailPage({
             label="Download preview"
             detail="This card can later contain a real report preview or PDF thumbnail."
             heightClassName="min-h-[300px]"
+            media={postMedia}
           />
         </div>
       </section>
@@ -197,6 +201,7 @@ export default async function ResourceDetailPage({
               label="Promotional image"
               detail="Professional business image placeholder"
               heightClassName="min-h-[300px]"
+              media={postMedia}
             />
           </Reveal>
         </div>

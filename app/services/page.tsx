@@ -5,6 +5,7 @@ import { PageHero } from "@/components/page-hero";
 import { PlaceholderMedia } from "@/components/placeholder-media";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { getMediaForKeywords } from "@/lib/media";
 import { createMetadata } from "@/lib/seo";
 import { serviceCategories } from "@/lib/content";
 
@@ -88,7 +89,13 @@ export default function ServicesPage() {
           {serviceCategories.map((service, index) => (
             <Reveal key={service.slug} delay={index * 60}>
               <article className="surface-card flex h-full flex-col p-5">
-                <div className="flex items-start justify-between gap-5">
+                <PlaceholderMedia
+                  label={service.title}
+                  detail={service.subtitle}
+                  heightClassName="min-h-[200px]"
+                  media={getMediaForKeywords(service.seo.keywords)}
+                />
+                <div className="mt-5 flex items-start justify-between gap-5">
                   <div>
                     <h3 className="text-2xl font-semibold text-white">
                       {service.title}

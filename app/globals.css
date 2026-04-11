@@ -629,13 +629,8 @@ select {
 }
 
 .site-header {
-  background: linear-gradient(
-    180deg,
-    var(--header-bg-strong) 0%,
-    var(--header-bg) 62%,
-    transparent 100%
-  );
-  backdrop-filter: blur(18px);
+  pointer-events: none;
+  background: transparent;
 }
 
 .site-nav-link {

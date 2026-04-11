@@ -7,6 +7,7 @@ import { PlaceholderMedia } from "@/components/placeholder-media";
 import { QuoteCarousel } from "@/components/quote-carousel";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { getMediaBySlug, getMediaForKeywords } from "@/lib/media";
 import { createMetadata } from "@/lib/seo";
 import {
   homeDifferenceCards,
@@ -25,12 +26,20 @@ export const metadata = createMetadata({
   path: "/",
 });
 
+const homeHeroMediaSlides = [
+  getMediaBySlug("income-tax-services"),
+  getMediaBySlug("financial-consulting"),
+  getMediaBySlug("legal-services"),
+  getMediaBySlug("audit-and-assurance"),
+].filter((media): media is NonNullable<typeof media> => Boolean(media));
+
 export default function HomePage() {
   return (
     <>
       <PageHero
         {...homeHero}
-        mediaLabel="Homepage hero image"
+        mediaLabel="Advisory focus"
+        mediaSlides={homeHeroMediaSlides}
         showSocial
       />
 
@@ -48,6 +57,7 @@ export default function HomePage() {
                   label={service.title}
                   detail={service.subtitle}
                   heightClassName="min-h-[220px]"
+                  media={getMediaForKeywords(service.seo.keywords)}
                 />
                 <div className="mt-5 flex flex-1 flex-col">
                   <h3 className="text-xl font-semibold text-white">
@@ -115,6 +125,7 @@ export default function HomePage() {
                   label={post.category}
                   detail="Featured image placeholder"
                   heightClassName="min-h-[180px]"
+                  media={getMediaForKeywords(post.seo.keywords)}
                 />
                 <div className="mt-5">
                   <p className="text-sm uppercase tracking-[0.18em] text-[var(--brand)]">

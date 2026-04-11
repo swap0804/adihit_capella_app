@@ -11,6 +11,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
 import { createBreadcrumbSchema, createMetadata, createServiceSchema } from "@/lib/seo";
 import { serviceCategories } from "@/lib/content";
+import { getMediaForKeywords } from "@/lib/media";
 import { absoluteUrl } from "@/lib/utils";
 
 type ServiceDetailPageProps = {
@@ -56,6 +57,7 @@ export default async function ServiceDetailPage({
   }
 
   const pageUrl = absoluteUrl(`/services/${service.slug}`);
+  const serviceMedia = getMediaForKeywords(service.seo.keywords);
 
   return (
     <>
@@ -91,6 +93,7 @@ export default async function ServiceDetailPage({
         cta={{ label: "Contact us", href: "/contact" }}
         secondaryCta={{ label: "All services", href: "/services" }}
         mediaLabel={`${service.title} hero`}
+        media={serviceMedia}
         showSocial
       />
 
@@ -115,6 +118,7 @@ export default async function ServiceDetailPage({
               label={`${service.title} supporting visual`}
               detail="Replace with a process visual, infographic, or service-specific professional image."
               heightClassName="min-h-[420px]"
+              media={serviceMedia}
             />
           </Reveal>
         </div>

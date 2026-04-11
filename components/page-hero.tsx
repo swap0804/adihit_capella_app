@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { HeroMediaCarousel } from "@/components/hero-media-carousel";
 import { PlaceholderMedia } from "@/components/placeholder-media";
 import {
   FacebookIcon,
@@ -8,10 +9,12 @@ import {
   LinkedInIcon,
 } from "@/components/social-icons";
 import { siteConfig } from "@/lib/site-config";
-import type { HeroContent } from "@/lib/types";
+import type { HeroContent, MediaAsset } from "@/lib/types";
 
 type PageHeroProps = HeroContent & {
   mediaLabel?: string;
+  media?: MediaAsset;
+  mediaSlides?: MediaAsset[];
   showSocial?: boolean;
   centered?: boolean;
 };
@@ -29,6 +32,8 @@ export function PageHero({
   tags,
   stats,
   mediaLabel = "Hero image placeholder",
+  media,
+  mediaSlides,
   showSocial = false,
   centered = false,
 }: PageHeroProps) {
@@ -90,6 +95,104 @@ export function PageHero({
     );
   }
 
+  const actions = (
+    <>
+      {cta ? (
+        isExternalHref(cta.href) ? (
+          <a
+            href={cta.href}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
+          >
+            {cta.label}
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        ) : (
+          <Link
+            href={cta.href}
+            className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
+          >
+            {cta.label}
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        )
+      ) : null}
+      {secondaryCta ? (
+        isExternalHref(secondaryCta.href) ? (
+          <a
+            href={secondaryCta.href}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.24)] px-5 py-3 text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+          >
+            {secondaryCta.label}
+          </a>
+        ) : (
+          <Link
+            href={secondaryCta.href}
+            className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.24)] px-5 py-3 text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+          >
+            {secondaryCta.label}
+          </Link>
+        )
+      ) : null}
+    </>
+  );
+
+  const social = showSocial ? (
+    <div className="mt-8 flex items-center gap-3 text-[var(--muted)]">
+      <span className="text-sm uppercase tracking-[0.2em]">Follow</span>
+      <div className="flex gap-2">
+        <a
+          href={siteConfig.social.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-full border border-[rgba(151,201,255,0.18)] p-2 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+          aria-label="LinkedIn"
+        >
+          <LinkedInIcon className="h-4 w-4" />
+        </a>
+        <a
+          href={siteConfig.social.instagram}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-full border border-[rgba(151,201,255,0.18)] p-2 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+          aria-label="Instagram"
+        >
+          <InstagramIcon className="h-4 w-4" />
+        </a>
+        <a
+          href={siteConfig.social.facebook}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-full border border-[rgba(151,201,255,0.18)] p-2 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+          aria-label="Facebook"
+        >
+          <FacebookIcon className="h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  ) : null;
+
+  if (mediaSlides?.length) {
+    return (
+      <section>
+        <HeroMediaCarousel
+          label={mediaLabel}
+          slides={mediaSlides}
+          heightClassName="min-h-[720px]"
+          content={{
+            eyebrow,
+            title,
+            description,
+            actions,
+          }}
+        />
+      </section>
+    );
+  }
+
   return (
     <section className="section-shell pt-10 md:pt-16">
       <div className="surface-card hero-panel overflow-hidden bg-[var(--hero-gradient)]">
@@ -102,48 +205,7 @@ export function PageHero({
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
               {description}
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              {cta ? (
-                isExternalHref(cta.href) ? (
-                  <a
-                    href={cta.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
-                  >
-                    {cta.label}
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
-                ) : (
-                  <Link
-                    href={cta.href}
-                    className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
-                  >
-                    {cta.label}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                )
-              ) : null}
-              {secondaryCta ? (
-                isExternalHref(secondaryCta.href) ? (
-                  <a
-                    href={secondaryCta.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.24)] px-5 py-3 text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
-                  >
-                    {secondaryCta.label}
-                  </a>
-                ) : (
-                  <Link
-                    href={secondaryCta.href}
-                    className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.24)] px-5 py-3 text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
-                  >
-                    {secondaryCta.label}
-                  </Link>
-                )
-              ) : null}
-            </div>
+            <div className="mt-8 flex flex-wrap gap-4">{actions}</div>
             {tags?.length ? (
               <div className="mt-6 flex flex-wrap gap-3">
                 {tags.map((tag) => (
@@ -173,45 +235,13 @@ export function PageHero({
                 ))}
               </div>
             ) : null}
-            {showSocial ? (
-              <div className="mt-8 flex items-center gap-3 text-[var(--muted)]">
-                <span className="text-sm uppercase tracking-[0.2em]">Follow</span>
-                <div className="flex gap-2">
-                  <a
-                    href={siteConfig.social.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full border border-[rgba(151,201,255,0.18)] p-2 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
-                    aria-label="LinkedIn"
-                  >
-                    <LinkedInIcon className="h-4 w-4" />
-                  </a>
-                  <a
-                    href={siteConfig.social.instagram}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full border border-[rgba(151,201,255,0.18)] p-2 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
-                    aria-label="Instagram"
-                  >
-                    <InstagramIcon className="h-4 w-4" />
-                  </a>
-                  <a
-                    href={siteConfig.social.facebook}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full border border-[rgba(151,201,255,0.18)] p-2 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
-                    aria-label="Facebook"
-                  >
-                    <FacebookIcon className="h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-            ) : null}
+            {social}
           </div>
           <PlaceholderMedia
             label={mediaLabel}
             detail="This framed placeholder is ready for a corporate banner image, executive portrait, infographic, or campaign visual."
             heightClassName="min-h-[360px]"
+            media={media}
           />
         </div>
       </div>

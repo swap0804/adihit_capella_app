@@ -5,6 +5,7 @@ import { PageHero } from "@/components/page-hero";
 import { PlaceholderMedia } from "@/components/placeholder-media";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { getMediaForKeywords } from "@/lib/media";
 import { createMetadata } from "@/lib/seo";
 import { resourcePosts, resourceTags } from "@/lib/content";
 import { formatDate } from "@/lib/utils";
@@ -42,6 +43,7 @@ export default function ResourcesPage() {
                   label={post.category}
                   detail="Featured image placeholder"
                   heightClassName="min-h-[180px]"
+                  media={getMediaForKeywords(post.seo.keywords)}
                 />
                 <div className="mt-5">
                   <p className="text-sm text-[var(--brand)]">
@@ -101,6 +103,7 @@ export default function ResourcesPage() {
             label="Bulletin preview"
             detail="Use this for the PDF cover, report thumbnail, or newsletter artwork."
             heightClassName="min-h-[320px]"
+            media={getMediaForKeywords(resourcePosts[0]?.seo.keywords)}
           />
         </div>
       </section>
@@ -131,6 +134,7 @@ export default function ResourcesPage() {
               label="Promotional image slot"
               detail="Replace with a professional consulting image, business visual, or campaign graphic."
               heightClassName="min-h-[320px]"
+              media={getMediaForKeywords(resourcePosts[1]?.seo.keywords)}
             />
           </Reveal>
         </div>

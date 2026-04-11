@@ -5,6 +5,7 @@ import { PageHero } from "@/components/page-hero";
 import { PlaceholderMedia } from "@/components/placeholder-media";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { getMediaForKeywords } from "@/lib/media";
 import { createMetadata } from "@/lib/seo";
 import { industryEntries } from "@/lib/content";
 
@@ -41,6 +42,7 @@ export default function IndustriesPage() {
                   label={industry.title}
                   detail="Large circular or sector-specific image can be placed here later."
                   heightClassName="min-h-[200px]"
+                  media={getMediaForKeywords(industry.seo.keywords)}
                 />
                 <div className="mt-5 flex flex-1 flex-col">
                   <h3 className="text-2xl font-semibold text-white">

@@ -12,7 +12,8 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { StructuredData } from "@/components/structured-data";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
-import { industryEntries, leaders } from "@/lib/content";
+import { industryEntries, leaders, resourcePosts } from "@/lib/content";
+import { getMediaForKeywords } from "@/lib/media";
 import { absoluteUrl } from "@/lib/utils";
 
 type IndustryDetailPageProps = {
@@ -23,6 +24,17 @@ type IndustryDetailPageProps = {
 
 export function generateStaticParams() {
   return industryEntries.map((industry) => ({ slug: industry.slug }));
+}
+
+function getResourceSlugFromHref(href: string) {
+  return href.split("/").filter(Boolean).at(-1);
+}
+
+function getLatestThinkingMedia(href: string) {
+  const resourceSlug = getResourceSlugFromHref(href);
+  const post = resourcePosts.find((item) => item.slug === resourceSlug);
+
+  return getMediaForKeywords(post?.seo.keywords);
 }
 
 export async function generateMetadata({
@@ -61,6 +73,7 @@ export default async function IndustryDetailPage({
   const selectedLeaders = leaders.filter((leader) =>
     industry.leaders.includes(leader.name),
   );
+  const industryMedia = getMediaForKeywords(industry.seo.keywords);
 
   return (
     <>
@@ -89,6 +102,7 @@ export default async function IndustryDetailPage({
         cta={{ label: "Contact us", href: "/contact" }}
         secondaryCta={{ label: "Submit RFP", href: "/contact" }}
         mediaLabel={`${industry.title} sector visual`}
+        media={industryMedia}
       />
 
       <section className="section-shell">
@@ -112,6 +126,7 @@ export default async function IndustryDetailPage({
               label={`${industry.title} explanatory visual`}
               detail="This area is ready for a sector image, case-study visual, or campaign asset."
               heightClassName="min-h-[420px]"
+              media={industryMedia}
             />
           </Reveal>
         </div>
@@ -131,6 +146,7 @@ export default async function IndustryDetailPage({
                   label={item.title}
                   detail="Featured image placeholder"
                   heightClassName="min-h-[170px]"
+                  media={getLatestThinkingMedia(item.href)}
                 />
                 <h3 className="mt-5 text-xl font-semibold text-white">
                   {item.title}

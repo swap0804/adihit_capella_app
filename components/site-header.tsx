@@ -11,8 +11,8 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="site-header sticky top-0 z-40 px-3 pb-3 pt-0">
-      <div className="mx-auto flex max-w-[1240px] items-center justify-between rounded-b-[1.8rem] rounded-t-none border border-[rgba(151,201,255,0.15)] bg-[rgba(4,17,31,0.78)] px-4 py-3 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl md:px-6">
+    <header className="site-header fixed left-0 right-0 top-0 z-40 px-3 py-3">
+      <div className="pointer-events-auto mx-auto flex max-w-[1240px] items-center justify-between rounded-[1.4rem] border border-[var(--card-border)] bg-[var(--header-bg-strong)] px-4 py-3 shadow-[0_18px_60px_rgba(0,0,0,0.34)] backdrop-blur-2xl md:px-6">
         <Link href="/" aria-label="Adihit Capella home">
           <BrandMark priority />
         </Link>
@@ -53,7 +53,7 @@ export function SiteHeader() {
         </button>
       </div>
       {open ? (
-        <div className="mx-auto mt-3 max-w-[1240px] rounded-[1.8rem] border border-[rgba(151,201,255,0.15)] bg-[rgba(4,17,31,0.94)] p-4 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl lg:hidden">
+        <div className="pointer-events-auto mx-auto mt-3 max-w-[1240px] rounded-[1.4rem] border border-[var(--card-border)] bg-[var(--header-bg-strong)] p-4 shadow-[0_18px_60px_rgba(0,0,0,0.34)] backdrop-blur-2xl lg:hidden">
           <nav className="grid gap-2">
             {siteConfig.navItems.map((item) => (
               <Link
