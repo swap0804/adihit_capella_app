@@ -140,7 +140,7 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <section className="section-shell pt-0">
+      {/* <section className="section-shell pt-0">
         <SectionHeading
           eyebrow="Tags"
           title="Tag-based discovery can become a simple internal content system."
@@ -156,7 +156,7 @@ export default function ResourcesPage() {
             </span>
           ))}
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

@@ -2,7 +2,12 @@ export const THEME_STORAGE_KEY = "adihit-capella-theme";
 export const THEME_PALETTE_STORAGE_KEY = "adihit-capella-palette";
 
 export const THEMES = ["dark", "light"] as const;
-export const THEME_PALETTES = ["classic", "current", "previous"] as const;
+export const THEME_PALETTES = [
+  "classic",
+  "current",
+  "previous",
+  "professional",
+] as const;
 
 export type ThemeMode = (typeof THEMES)[number];
 export type ThemePalette = (typeof THEME_PALETTES)[number];
@@ -14,6 +19,7 @@ export const THEME_PALETTE_LABELS: Record<ThemePalette, string> = {
   classic: "Classic",
   current: "Ember",
   previous: "Logo Prism",
+  professional: "Professional",
 };
 
 export const THEME_COLORS: Record<ThemePalette, Record<ThemeMode, string>> = {
@@ -29,6 +35,10 @@ export const THEME_COLORS: Record<ThemePalette, Record<ThemeMode, string>> = {
     dark: "#08090d",
     light: "#fffaf0",
   },
+  professional: {
+    dark: "#0f1724",
+    light: "#f5f7fa",
+  },
 };
 
 export function isThemeMode(value: string | null | undefined): value is ThemeMode {
@@ -38,7 +48,12 @@ export function isThemeMode(value: string | null | undefined): value is ThemeMod
 export function isThemePalette(
   value: string | null | undefined,
 ): value is ThemePalette {
-  return value === "classic" || value === "current" || value === "previous";
+  return (
+    value === "classic" ||
+    value === "current" ||
+    value === "previous" ||
+    value === "professional"
+  );
 }
 
 export function resolveThemePalette(
@@ -68,6 +83,7 @@ export function getThemeInitScript() {
     const paletteStorageKey = ${JSON.stringify(THEME_PALETTE_STORAGE_KEY)};
     const defaultTheme = ${JSON.stringify(DEFAULT_THEME)};
     const defaultPalette = ${JSON.stringify(DEFAULT_THEME_PALETTE)};
+    const themePalettes = ${JSON.stringify(THEME_PALETTES)};
     const themeColors = ${JSON.stringify(THEME_COLORS)};
 
     try {
@@ -76,7 +92,7 @@ export function getThemeInitScript() {
       const theme = storedTheme === "light" || storedTheme === "dark"
         ? storedTheme
         : defaultTheme;
-      const palette = storedPalette === "classic" || storedPalette === "current" || storedPalette === "previous"
+      const palette = themePalettes.includes(storedPalette)
         ? storedPalette
         : storedPalette === "ember"
         ? "current"

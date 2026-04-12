@@ -147,8 +147,8 @@ export default function HomePage() {
       <section className="section-shell">
         <SectionHeading
           eyebrow="Testimonials"
-          title="A carousel-ready area for client reviews and social proof."
-          description="This can later be connected to real testimonials or third-party review workflows once you finalise the integration."
+          title=""
+          description=""
         />
         <Reveal>
           <QuoteCarousel items={testimonials} />

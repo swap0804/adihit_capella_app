@@ -24,8 +24,9 @@ export const siteConfig = {
   email: 'hello@adihitcapella.com',
   whatsapp: '918433880864',
   social: {
-    linkedin: 'https://www.linkedin.com/',
-    instagram: 'https://www.instagram.com/',
+    linkedin: 'https://www.linkedin.com/company/adihit-capella/',
+    instagram:
+      'https://www.instagram.com/adihitcapella_official?igsh=MTJ6enYzNmU3Z2o3aA==',
     facebook: 'https://www.facebook.com/',
   },
   navItems: [
@@ -50,9 +51,10 @@ export const siteConfig = {
       phone: '+91 84338 80864',
       email: 'info@adihitcapella.com',
       mapLabel: 'HP and Associates, Advocates & solicitors',
-      mapQuery:
-        `place_id:${process.env.NEXT_PUBLIC_GOOGLE_MAPS_PLACE_ID ||
-        'ChIJgd4ftBO_5zsRwTlWEoEdF1A'}`,
+      mapQuery: `place_id:${
+        process.env.NEXT_PUBLIC_GOOGLE_MAPS_PLACE_ID ||
+        'ChIJgd4ftBO_5zsRwTlWEoEdF1A'
+      }`,
     },
   ] satisfies OfficeLocation[],
   chatQuickActions: [

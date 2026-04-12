@@ -58,25 +58,25 @@ export function HeroMediaCarousel({
       <div className="relative z-20 mx-auto flex min-h-[inherit] max-w-[var(--max-width)] flex-col justify-end px-5 pb-16 pt-32 md:px-8 md:pb-20 md:pt-36">
         <div className="max-w-3xl">
           {content.eyebrow ? (
-            <span className="inline-flex rounded-full border border-[rgba(155,207,79,0.32)] bg-[rgba(5,10,18,0.42)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#b9ef75] backdrop-blur-md">
+            <span className="inline-flex rounded-full border border-white/30 bg-[rgba(5,10,18,0.42)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#fff] backdrop-blur-md">
               {content.eyebrow}
             </span>
           ) : null}
-          <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-[#f8fbff] drop-shadow-[0_4px_24px_rgba(0,0,0,0.46)] md:text-6xl">
+          <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-[#fff] drop-shadow-[0_4px_24px_rgba(0,0,0,0.46)] md:text-6xl">
             {content.title}
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-[#d6e2f2] drop-shadow-[0_3px_16px_rgba(0,0,0,0.42)]">
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-[#fff] drop-shadow-[0_3px_16px_rgba(0,0,0,0.42)]">
             {content.description}
           </p>
           {content.actions ? (
-            <div className="mt-8 flex flex-wrap gap-4 [&_a.border]:!text-[#f8fbff]">
+            <div className="mt-8 flex flex-wrap gap-4 [&_a.border]:!text-[#fff]">
               {content.actions}
             </div>
           ) : null}
         </div>
 
         <div className="mt-12 flex items-center justify-between gap-5">
-          <span className="hidden text-xs font-semibold uppercase tracking-[0.14em] text-[#b9ef75] md:inline-flex">
+          <span className="hidden text-xs font-semibold uppercase tracking-[0.14em] text-[#fff] md:inline-flex">
             {active.caption || label}
           </span>
           <CarouselControls

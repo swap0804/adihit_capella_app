@@ -122,6 +122,25 @@ type MediaAssetKey = keyof typeof mediaAssetsBySlug;
 const mediaAssets: Record<string, MediaAsset> = mediaAssetsBySlug;
 
 const keywordToMediaKey = {
+  "about adihit capella banner": "financial-consulting",
+  "advisory focus": "financial-consulting",
+  "article image placeholder": "compliance-architecture-for-growth-stage-companies",
+  "articleship culture visual": "company-registration-and-startup-services",
+  "bulletin preview": "monthly-tax-bulletin-february-2026",
+  "careers banner": "company-registration-and-startup-services",
+  "contact visual": "legal-services",
+  "download preview": "monthly-tax-bulletin-february-2026",
+  "global network": "financial-consulting",
+  "hero image placeholder": "financial-consulting",
+  "how we work visual": "audit-and-assurance",
+  "industries overview visual": "warehousing-and-logistics",
+  "life at adihit capella video or image": "company-registration-and-startup-services",
+  "office location map": "infrastructure-and-real-estate",
+  "promotional image": "financial-consulting",
+  "promotional image slot": "funding-readiness-and-the-modern-startup-finance-stack",
+  "services infographic placeholder": "financial-consulting",
+  "services overview image": "financial-consulting",
+  "working at adihit capella banner": "company-registration-and-startup-services",
   "income tax services": "income-tax-services",
   "tax advisory": "income-tax-services",
   "itr filing": "income-tax-services",
@@ -158,6 +177,20 @@ const keywordToMediaKey = {
   "warehousing compliance": "warehousing-and-logistics",
   "trust audit": "education-and-trusts",
   "education institution advisory": "education-and-trusts",
+  "student-focused banner": "education-and-trusts",
+  "training collage": "education-and-trusts",
+  "office story visual": "company-registration-and-startup-services",
+  "office collage": "company-registration-and-startup-services",
+  "office interaction image": "audit-and-assurance",
+  "executive portrait": "financial-consulting",
+  "corporate banner": "financial-consulting",
+  "process diagram": "financial-consulting",
+  "business solutions image": "financial-consulting",
+  "professional consulting image": "financial-consulting",
+  "campaign graphic": "funding-readiness-and-the-modern-startup-finance-stack",
+  "support image": "legal-services",
+  "careers image": "company-registration-and-startup-services",
+  "gallery image placeholder": "company-registration-and-startup-services",
   "monthly tax bulletin": "monthly-tax-bulletin-february-2026",
   "tax newsletter": "monthly-tax-bulletin-february-2026",
   "compliance consulting": "compliance-architecture-for-growth-stage-companies",
@@ -189,4 +222,25 @@ export function getMediaForKeywords(keywords: string[] = []): MediaAsset | undef
   }
 
   return undefined;
+}
+
+export function getRelatedMedia(
+  label: string,
+  detail = "",
+): MediaAsset {
+  const directMedia = getMediaForKeywords([label, detail]);
+
+  if (directMedia) {
+    return directMedia;
+  }
+
+  const combined = normalizeKeyword(`${label} ${detail}`);
+
+  for (const [keyword, mediaKey] of Object.entries(keywordMediaLookup)) {
+    if (combined.includes(keyword)) {
+      return mediaAssetsBySlug[mediaKey];
+    }
+  }
+
+  return mediaAssetsBySlug["financial-consulting"];
 }
