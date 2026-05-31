@@ -1,13 +1,10 @@
 import { BharatChat } from "@/components/bharat-chat";
-import { ThemePaletteToggle, ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/site-config";
 import { WhatsAppIcon } from "@/components/social-icons";
 
 export function FloatingActions() {
   return (
     <div className="floating-action-stack">
-      <ThemeToggle />
-      <ThemePaletteToggle />
       <a
         href={`https://wa.me/${siteConfig.whatsapp}`}
         target="_blank"

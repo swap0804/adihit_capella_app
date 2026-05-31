@@ -11,7 +11,6 @@ import {
 import {
   DEFAULT_THEME_PALETTE,
   DEFAULT_THEME,
-  getNextThemePalette,
   isThemeMode,
   resolveThemePalette,
   THEME_COLORS,
@@ -25,10 +24,8 @@ type ThemeContextValue = {
   mounted: boolean;
   palette: ThemePalette;
   setPalette: (palette: ThemePalette) => void;
-  togglePalette: () => void;
   theme: ThemeMode;
   setTheme: (theme: ThemeMode) => void;
-  toggleTheme: () => void;
 };
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
@@ -54,18 +51,15 @@ export function ThemeProvider({
 }>) {
   const [mounted, setMounted] = useState(false);
   const [theme, setThemeState] = useState<ThemeMode>(DEFAULT_THEME);
-  const [palette, setPaletteState] = useState<ThemePalette>(
-    DEFAULT_THEME_PALETTE,
-  );
+  const [palette, setPaletteState] = useState<ThemePalette>(DEFAULT_THEME_PALETTE);
 
   useEffect(() => {
     queueMicrotask(() => {
       const root = document.documentElement;
       const rootTheme = root.dataset.theme;
-      const rootPalette = root.dataset.palette;
 
       setThemeState(isThemeMode(rootTheme) ? rootTheme : DEFAULT_THEME);
-      setPaletteState(resolveThemePalette(rootPalette));
+      setPaletteState(resolveThemePalette());
       setMounted(true);
     });
   }, []);
@@ -88,15 +82,13 @@ export function ThemeProvider({
   useEffect(() => {
     function handleStorage(event: StorageEvent) {
       if (event.key === THEME_STORAGE_KEY && isThemeMode(event.newValue)) {
-        setThemeState(event.newValue);
-        applyTheme(event.newValue, palette);
+        setThemeState(DEFAULT_THEME);
+        applyTheme(DEFAULT_THEME, DEFAULT_THEME_PALETTE);
       }
 
       if (event.key === THEME_PALETTE_STORAGE_KEY) {
-        const nextPalette = resolveThemePalette(event.newValue);
-
-        setPaletteState(nextPalette);
-        applyTheme(theme, nextPalette);
+        setPaletteState(DEFAULT_THEME_PALETTE);
+        applyTheme(DEFAULT_THEME, DEFAULT_THEME_PALETTE);
       }
     }
 
@@ -119,24 +111,14 @@ export function ThemeProvider({
     });
   }
 
-  function toggleTheme() {
-    setTheme(theme === "dark" ? "light" : "dark");
-  }
-
-  function togglePalette() {
-    setPalette(getNextThemePalette(palette));
-  }
-
   return (
     <ThemeContext.Provider
       value={{
         mounted,
         palette,
         setPalette,
-        togglePalette,
         theme,
         setTheme,
-        toggleTheme,
       }}
     >
       {children}

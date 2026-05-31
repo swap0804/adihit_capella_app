@@ -11,8 +11,8 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="site-header fixed left-0 right-0 top-0 z-40 px-3 py-3">
-      <div className="pointer-events-auto mx-auto flex max-w-[1240px] items-center justify-between rounded-[1.4rem] border border-[var(--card-border)] bg-[var(--header-bg-strong)] px-4 py-3 shadow-[0_18px_60px_rgba(0,0,0,0.34)] backdrop-blur-2xl md:px-6">
+    <header className="site-header sticky left-0 right-0 top-0 z-50 border-b border-[var(--card-border)] bg-[var(--header-bg-strong)]">
+      <div className="pointer-events-auto mx-auto flex max-w-[1240px] items-center justify-between px-4 py-3 md:px-6">
         <Link href="/" aria-label="Adihit Capella home">
           <BrandMark priority />
         </Link>
@@ -53,7 +53,7 @@ export function SiteHeader() {
         </button>
       </div>
       {open ? (
-        <div className="pointer-events-auto mx-auto mt-3 max-w-[1240px] rounded-[1.4rem] border border-[var(--card-border)] bg-[var(--header-bg-strong)] p-4 shadow-[0_18px_60px_rgba(0,0,0,0.34)] backdrop-blur-2xl lg:hidden">
+        <div className="pointer-events-auto mx-auto max-w-[1240px] border-t border-[var(--card-border)] bg-[var(--header-bg-strong)] p-4 lg:hidden">
           <nav className="grid gap-2">
             {siteConfig.navItems.map((item) => (
               <Link

@@ -20,9 +20,8 @@ type HeroMediaCarouselProps = {
 };
 
 export function HeroMediaCarousel({
-  label,
   slides,
-  heightClassName = "min-h-[720px]",
+  heightClassName = "min-h-[520px]",
   content,
 }: HeroMediaCarouselProps) {
   const [index, setIndex] = useState(0);
@@ -43,47 +42,44 @@ export function HeroMediaCarousel({
   }
 
   return (
-    <div className={`relative isolate overflow-hidden ${heightClassName}`}>
-      <Image
-        src={active.src}
-        alt={active.alt}
-        fill
-        priority
-        unoptimized
-        sizes="100vw"
-        className="z-0 object-cover object-center"
-      />
-      <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(2,6,12,0.86)_0%,rgba(2,6,12,0.56)_44%,rgba(2,6,12,0.2)_100%),linear-gradient(180deg,rgba(2,6,12,0.08)_0%,rgba(2,6,12,0.72)_100%)]" />
-      <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_18%_22%,rgba(155,207,79,0.18),transparent_30%),radial-gradient(circle_at_70%_74%,rgba(118,212,215,0.1),transparent_34%)]" />
-      <div className="relative z-20 mx-auto flex min-h-[inherit] max-w-[var(--max-width)] flex-col justify-end px-5 pb-16 pt-32 md:px-8 md:pb-20 md:pt-36">
-        <div className="max-w-3xl">
-          {content.eyebrow ? (
-            <span className="inline-flex rounded-full border border-white/30 bg-[rgba(5,10,18,0.42)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#fff] backdrop-blur-md">
-              {content.eyebrow}
-            </span>
-          ) : null}
-          <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-[#fff] drop-shadow-[0_4px_24px_rgba(0,0,0,0.46)] md:text-6xl">
-            {content.title}
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-[#fff] drop-shadow-[0_3px_16px_rgba(0,0,0,0.42)]">
-            {content.description}
-          </p>
-          {content.actions ? (
-            <div className="mt-8 flex flex-wrap gap-4 [&_a.border]:!text-[#fff]">
-              {content.actions}
-            </div>
-          ) : null}
-        </div>
-
-        <div className="mt-12 flex items-center justify-between gap-5">
-          <span className="hidden text-xs font-semibold uppercase tracking-[0.14em] text-[#fff] md:inline-flex">
-            {active.caption || label}
-          </span>
+    <div>
+      <div className={`relative isolate overflow-hidden ${heightClassName}`}>
+        <Image
+          src={active.src}
+          alt={active.alt}
+          fill
+          priority
+          unoptimized
+          sizes="100vw"
+          className="z-0 object-cover object-center"
+        />
+        <div className="absolute bottom-6 left-5 right-5 z-10 mx-auto flex max-w-[var(--max-width)] justify-end md:left-8 md:right-8">
           <CarouselControls
             index={index}
             slides={slides}
             setIndex={setIndex}
           />
+        </div>
+      </div>
+
+      <div className="section-shell py-12 md:py-16">
+        <div className="max-w-4xl">
+          {content.eyebrow ? (
+            <span className="eyebrow">
+              {content.eyebrow}
+            </span>
+          ) : null}
+          <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-white md:text-6xl">
+            {content.title}
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-[var(--muted)]">
+            {content.description}
+          </p>
+          {content.actions ? (
+            <div className="mt-8 flex flex-wrap gap-4">
+              {content.actions}
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

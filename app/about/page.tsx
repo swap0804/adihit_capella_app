@@ -71,7 +71,7 @@ export default function AboutPage() {
       </section>
 
       <section className="section-shell">
-        <div className="rounded-[1.8rem] bg-[linear-gradient(135deg,rgba(44,125,255,0.22),rgba(121,240,209,0.14))] p-[1px]">
+        <div className="rounded-[1.8rem] bg-[linear-gradient(135deg,var(--highlight-bg),var(--accent-soft))] p-[1px]">
           <div className="grid gap-4 rounded-[1.75rem] bg-[rgba(5,14,27,0.94)] p-6 md:grid-cols-4">
             {presenceStats.map((stat) => (
               <div

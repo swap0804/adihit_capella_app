@@ -7,7 +7,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { getMediaForKeywords } from "@/lib/media";
 import { createMetadata } from "@/lib/seo";
-import { resourcePosts, resourceTags } from "@/lib/content";
+import { resourcePosts } from "@/lib/content";
 import { formatDate } from "@/lib/utils";
 
 export const metadata = createMetadata({
