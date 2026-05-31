@@ -58,7 +58,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="page-shell">
             <SiteHeader />
-            <main>{children}</main>
+            <main className="site-main">{children}</main>
             <SiteFooter />
             <FloatingActions />
           </div>

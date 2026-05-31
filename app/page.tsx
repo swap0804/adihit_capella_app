@@ -10,6 +10,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { getMediaBySlug, getMediaForKeywords } from "@/lib/media";
 import { createMetadata } from "@/lib/seo";
 import {
+  homeDifferenceIntro,
   homeDifferenceCards,
   homeHero,
   newsItems,
@@ -27,9 +28,9 @@ export const metadata = createMetadata({
 });
 
 const homeHeroMediaSlides = [
-  getMediaBySlug("income-tax-services"),
+  getMediaBySlug("company-registration-and-startup-services"),
   getMediaBySlug("financial-consulting"),
-  getMediaBySlug("legal-services"),
+  getMediaBySlug("funding-readiness-and-the-modern-startup-finance-stack"),
   getMediaBySlug("audit-and-assurance"),
 ].filter((media): media is NonNullable<typeof media> => Boolean(media));
 
@@ -46,13 +47,24 @@ export default function HomePage() {
       <section className="section-shell">
         <SectionHeading
           eyebrow="Services"
-          title="Core advisory verticals, presented for fast scanning and strong intent conversion."
-          description="The home page service block is structured for SEO-rich summaries, easy content edits, and a premium first impression."
+          title="Business Advisory and Compliance Services Built for Long-term Growth"
+          description="When it comes to audit, tax, finance, legal, accounting and process innovation, subject matter expertise becomes imperative. Take a step back and let professionals at Adihit Capella handle compliance and strengthen operations, allowing you to make informed decisions with clarity."
         />
+        <p className="mb-8 max-w-3xl text-base leading-8 text-[#111827]">
+          We combine practical advisory with accurate execution and long-term thinking, equipping clients with support that stays relevant today and dependable as their business evolves.
+        </p>
+        <div className="mb-8 max-w-3xl">
+          <h3 className="text-2xl font-bold text-white">
+            Services That Strengthen Modern Business Requirements
+          </h3>
+          <p className="mt-3 text-base leading-8 text-[#111827]">
+            Our services are designed to keep your operations clear and organised. Trust our experts for practical, process-driven services that shape long-term business readiness.
+          </p>
+        </div>
         <div className="grid gap-4 lg:grid-cols-4">
-          {serviceCategories.slice(0, 4).map((service, index) => (
+          {serviceCategories.map((service, index) => (
             <Reveal key={service.slug} delay={index * 70}>
-              <article className="surface-card flex h-full flex-col p-4">
+              <article className="surface-card flex h-full flex-col p-4 service-card">
                 <PlaceholderMedia
                   label={service.title}
                   detail={service.subtitle}
@@ -60,15 +72,15 @@ export default function HomePage() {
                   media={getMediaForKeywords(service.seo.keywords)}
                 />
                 <div className="mt-5 flex flex-1 flex-col">
-                  <h3 className="text-xl font-semibold text-white">
+                  <h3 className="text-2xl font-bold text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-3 flex-1 text-sm leading-7 text-[var(--muted)]">
+                  <p className="mt-3 flex-1 text-sm leading-7 text-[#111827]">
                     {service.summary}
                   </p>
                   <Link
                     href={`/services/${service.slug}`}
-                    className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[var(--brand)]"
+                    className="card-read-more mt-5 inline-flex items-center gap-2 text-sm font-medium"
                   >
                     Read more
                     <ArrowRight className="h-4 w-4" />
@@ -85,8 +97,8 @@ export default function HomePage() {
           <Reveal>
             <SectionHeading
               eyebrow="Adihit Capella difference"
-              title="A sharper digital presence for a consultancy that works across legal, tax, and finance."
-              description="This section uses compact cards instead of dense paragraphs so the differentiation story stays premium and easy to absorb."
+              title="The Adihit Capella Difference"
+              description={homeDifferenceIntro.join(" ")}
             />
           </Reveal>
           <div className="grid gap-4">
@@ -137,6 +149,10 @@ export default function HomePage() {
                   <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
                     {post.excerpt}
                   </p>
+                  <span className="card-read-more mt-5 inline-flex items-center gap-2 text-sm font-medium">
+                    Read more
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
                 </div>
               </Link>
             </Reveal>
@@ -144,12 +160,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell">
-        <SectionHeading
-          eyebrow="Testimonials"
-          title=""
-          description=""
-        />
+      <section className="bg-[#061b3a] px-5 py-16 md:px-8 md:py-20">
         <Reveal>
           <QuoteCarousel items={testimonials} />
         </Reveal>
@@ -172,6 +183,10 @@ export default function HomePage() {
                 <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
                   {item.description}
                 </p>
+                <span className="card-read-more mt-5 inline-flex items-center gap-2 text-sm font-medium">
+                  Read more
+                  <ArrowRight className="h-4 w-4" />
+                </span>
               </Link>
             </Reveal>
           ))}

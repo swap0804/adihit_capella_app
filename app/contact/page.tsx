@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Send } from "lucide-react";
+import { ArrowRight, MapPin, Phone, Send } from "lucide-react";
 
 import { ContactForm } from "@/components/contact-form";
 import { OfficeMap } from "@/components/office-map";
@@ -53,6 +53,10 @@ export default function ContactPage() {
                 <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
                   {card.description}
                 </p>
+                <span className="card-read-more mt-5 inline-flex items-center gap-2 text-sm font-medium">
+                  Read more
+                  <ArrowRight className="h-4 w-4" />
+                </span>
               </Link>
             </Reveal>
           ))}

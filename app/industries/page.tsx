@@ -51,8 +51,8 @@ export default function IndustriesPage() {
                   <p className="mt-3 flex-1 text-sm leading-7 text-[var(--muted)]">
                     {industry.summary}
                   </p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[var(--brand)]">
-                    Explore industry
+                  <span className="card-read-more mt-5 inline-flex items-center gap-2 text-sm font-medium">
+                    Read more
                     <ArrowRight className="h-4 w-4" />
                   </span>
                 </div>

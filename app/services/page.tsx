@@ -12,7 +12,7 @@ import { serviceCategories } from "@/lib/content";
 export const metadata = createMetadata({
   title: "Services",
   description:
-    "Explore Adihit Capella services across income tax, GST, audit, bookkeeping, startup setup, ROC compliance, finance consulting, and legal advisory.",
+    "Explore Adihit Capella services for company registration, financial consulting, specialised compliance, and ROC compliance.",
   path: "/services",
 });
 
@@ -21,8 +21,8 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title="A service architecture built for SEO depth, premium presentation, and easy future expansion."
-        description="Each service can scale into a dedicated landing page with structured content blocks, accordions, and conversion pathways."
+        title="Business Advisory and Compliance Services Built for Long-term Growth"
+        description="Our services are designed to keep your operations clear and organised. Trust our experts for practical, process-driven services that shape long-term business readiness."
         cta={{ label: "Contact us", href: "/contact" }}
         secondaryCta={{ label: "Explore industries", href: "/industries" }}
         mediaLabel="Services overview image"
@@ -34,18 +34,18 @@ export default function ServicesPage() {
           <Reveal>
             <SectionHeading
               eyebrow="Advisory overview"
-              title="Use this page to orient visitors before they choose a more specific capability."
-              description="The left-right structure supports explanatory content, process messaging, or a visual flowchart when your final assets are ready."
+              title="Services That Strengthen Modern Business Requirements"
+              description="When it comes to audit, tax, finance, legal, accounting and process innovation, subject matter expertise becomes imperative. Adihit Capella combines practical advisory with accurate execution and long-term thinking."
             />
             <ul className="grid gap-3 text-sm leading-7 text-[var(--muted)]">
               <li className="surface-card-muted p-4">
-                Present integrated service logic instead of isolated capability lists.
+                Practical, process-driven services that shape long-term business readiness.
               </li>
               <li className="surface-card-muted p-4">
-                Build stronger internal linking from services to industries and resources.
+                Clear registration, filing, compliance, consulting, and control support.
               </li>
               <li className="surface-card-muted p-4">
-                Keep future service additions content-driven through the shared data model.
+                Coordinated accountability across core professional service requirements.
               </li>
             </ul>
           </Reveal>
@@ -60,35 +60,15 @@ export default function ServicesPage() {
       </section>
 
       <section className="section-shell">
-        <div className="surface-card flex flex-col items-start justify-between gap-5 p-6 md:flex-row md:items-center md:p-8">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-[var(--brand)]">
-              Promotional strip
-            </p>
-            <h2 className="mt-3 text-2xl font-semibold text-white">
-              Highlight campaigns, announcements, or strategic firm positioning here.
-            </h2>
-          </div>
-          <Link
-            href="/resources"
-            className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.18)] px-5 py-3 text-sm text-white transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
-          >
-            Read more
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
-
-      <section className="section-shell">
         <SectionHeading
           eyebrow="Service categories"
-          title="Every card below links into a reusable detail template."
-          description="This makes it easy to expand content later while keeping the design system consistent across the whole site."
+          title="Four services for modern business requirements."
+          description="Each card links to a focused service page with deeper details and key service lists."
         />
         <div className="grid gap-4 md:grid-cols-2">
           {serviceCategories.map((service, index) => (
             <Reveal key={service.slug} delay={index * 60}>
-              <article className="surface-card flex h-full flex-col p-5">
+              <article className="surface-card flex h-full flex-col p-5 service-card">
                 <PlaceholderMedia
                   label={service.title}
                   detail={service.subtitle}
@@ -97,25 +77,25 @@ export default function ServicesPage() {
                 />
                 <div className="mt-5 flex items-start justify-between gap-5">
                   <div>
-                    <h3 className="text-2xl font-semibold text-white">
+                    <h3 className="text-2xl font-bold text-white">
                       {service.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
+                    <p className="mt-3 text-sm leading-7 text-[#111827]">
                       {service.subtitle}
                     </p>
                   </div>
-                  <div className="rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-2 text-xs uppercase tracking-[0.18em] text-[var(--brand)]">
+                  <div className="border border-[rgba(151,201,255,0.18)] px-4 py-2 text-xs uppercase tracking-[0.18em] text-[var(--brand)]">
                     {service.phone}
                   </div>
                 </div>
-                <p className="mt-5 flex-1 text-sm leading-7 text-[var(--muted)]">
+                <p className="mt-5 flex-1 text-sm leading-7 text-[#111827]">
                   {service.summary}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {service.differentiators.map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-[rgba(151,201,255,0.16)] px-3 py-1.5 text-xs text-white"
+                      className="border border-[rgba(151,201,255,0.16)] px-3 py-1.5 text-xs text-white"
                     >
                       {item}
                     </span>
@@ -123,9 +103,9 @@ export default function ServicesPage() {
                 </div>
                 <Link
                   href={`/services/${service.slug}`}
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[var(--brand)]"
+                  className="card-read-more mt-6 inline-flex items-center gap-2 text-sm font-medium"
                 >
-                  Explore service
+                  Read more
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </article>

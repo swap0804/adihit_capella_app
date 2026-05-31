@@ -131,9 +131,9 @@ export default function AboutPage() {
                   </p>
                   <Link
                     href={card.cta.href}
-                    className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[var(--brand)]"
+                    className="card-read-more mt-5 inline-flex items-center gap-2 text-sm font-medium"
                   >
-                    {card.cta.label}
+                    Read more
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>

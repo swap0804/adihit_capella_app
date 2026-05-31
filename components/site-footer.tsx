@@ -7,64 +7,82 @@ import {
   InstagramIcon,
   LinkedInIcon,
 } from "@/components/social-icons";
+import { serviceCategories } from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
 
 export function SiteFooter() {
   const office = siteConfig.officeLocations[0];
 
   return (
-    <footer className="section-shell pt-0">
-      <div className="surface-card overflow-hidden p-6 md:p-8">
-        <div className="grid gap-10 lg:grid-cols-[1.25fr_0.9fr_0.9fr]">
+    <footer className="bg-[#061b3a] px-5 py-12 text-[#fff] md:px-8">
+      <div className="mx-auto max-w-[var(--max-width)]">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-5">
             <BrandMark />
-            <p className="max-w-md text-sm leading-7 text-[var(--muted)]">
-              Placeholder-ready corporate website for a futuristic CA, legal,
-              and finance advisory brand. Swap content, numbers, and imagery
-              later without changing the visual structure.
+            <p className="max-w-md text-sm leading-7 text-blue-100">
+              Adihit Capella supports businesses with registration, finance,
+              compliance, ROC, and process-focused advisory for long-term
+              operational readiness.
             </p>
-            <div className="flex flex-wrap gap-3 text-sm">
-              <a
-                href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
-                className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-2 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
-              >
-                <Phone className="h-4 w-4" />
-                {siteConfig.phone}
-              </a>
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-2 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
-              >
-                <Send className="h-4 w-4" />
-                {siteConfig.email}
-              </a>
-            </div>
           </div>
+
           <div>
-            <p className="text-sm uppercase tracking-[0.24em] text-[var(--brand)]">
-              Footer menu
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7ec8ff]">
+              Quick links
             </p>
             <div className="mt-5 grid gap-3">
-              {siteConfig.legalLinks.map((item) => (
+              {[...siteConfig.navItems, ...siteConfig.legalLinks].map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-sm text-[var(--muted)] transition hover:text-white"
+                  className="text-sm text-blue-100 transition hover:text-[#7ec8ff]"
                 >
                   {item.label}
                 </Link>
               ))}
             </div>
           </div>
-          <div className="space-y-5">
-            <p className="text-sm uppercase tracking-[0.24em] text-[var(--brand)]">
-              Follow & visit
+
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7ec8ff]">
+              Services
             </p>
-            <div className="space-y-3 text-sm text-[var(--muted)]">
+            <div className="mt-5 grid gap-3">
+              {serviceCategories.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className="text-sm text-blue-100 transition hover:text-[#7ec8ff]"
+                >
+                  {service.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-5">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7ec8ff]">
+              Contact details
+            </p>
+            <div className="space-y-3 text-sm text-blue-100">
               <div className="flex items-start gap-3">
-                <MapPin className="mt-1 h-4 w-4 text-[var(--brand)]" />
+                <MapPin className="mt-1 h-4 w-4 text-[#7ec8ff]" />
                 <span>{office?.address}</span>
               </div>
+              <a
+                href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
+                className="flex items-center gap-3 transition hover:text-[#7ec8ff]"
+              >
+                <Phone className="h-4 w-4 text-[#7ec8ff]" />
+                {siteConfig.phone}
+              </a>
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="flex items-center gap-3 transition hover:text-[#7ec8ff]"
+              >
+                <Send className="h-4 w-4 text-[#7ec8ff]" />
+                {siteConfig.email}
+              </a>
             </div>
             <div className="flex gap-3">
               <a
@@ -72,7 +90,7 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
-                className="rounded-full border border-[rgba(151,201,255,0.18)] p-3 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+                className="border border-blue-200/30 p-3 text-blue-100 transition hover:border-[#7ec8ff] hover:text-[#7ec8ff]"
               >
                 <LinkedInIcon className="h-4 w-4" />
               </a>
@@ -81,7 +99,7 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="rounded-full border border-[rgba(151,201,255,0.18)] p-3 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+                className="border border-blue-200/30 p-3 text-blue-100 transition hover:border-[#7ec8ff] hover:text-[#7ec8ff]"
               >
                 <InstagramIcon className="h-4 w-4" />
               </a>
@@ -90,15 +108,16 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
-                className="rounded-full border border-[rgba(151,201,255,0.18)] p-3 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
+                className="border border-blue-200/30 p-3 text-blue-100 transition hover:border-[#7ec8ff] hover:text-[#7ec8ff]"
               >
                 <FacebookIcon className="h-4 w-4" />
               </a>
             </div>
           </div>
         </div>
-        <div className="mt-8 border-t border-[rgba(151,201,255,0.12)] pt-5 text-sm text-[var(--muted)]">
-          © 2026 Adihit Capella. All rights reserved.
+
+        <div className="mt-10 border-t border-blue-200/20 pt-5 text-sm text-blue-100">
+          &copy; 2026 Adihit Capella. All rights reserved.
         </div>
       </div>
     </footer>

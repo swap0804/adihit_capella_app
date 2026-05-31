@@ -11,7 +11,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="site-header sticky left-0 right-0 top-0 z-50 border-b border-[var(--card-border)] bg-[var(--header-bg-strong)]">
+    <header className="site-header fixed left-0 right-0 top-0 z-50 border-b border-[var(--card-border)] bg-[var(--header-bg-strong)]">
       <div className="pointer-events-auto mx-auto flex max-w-[1240px] items-center justify-between px-4 py-3 md:px-6">
         <Link href="/" aria-label="Adihit Capella home">
           <BrandMark priority />

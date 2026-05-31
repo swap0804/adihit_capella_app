@@ -14,38 +14,47 @@ import type {
 } from "@/lib/types";
 
 export const homeHero: HeroContent = {
-  eyebrow: "Legal • Tax • Audit • Finance",
-  title: "Future-ready advisory for businesses that need clarity, compliance, and confident growth.",
+  eyebrow: "Audit | Tax | Finance | Legal",
+  title: "Professional advisory for clearer decisions, stronger control, and long-term business readiness.",
   description:
-    "Adihit Capella blends CA-firm discipline with strategic legal and finance consulting. This v1 site is structured for strong SEO, premium credibility, and easy content replacement when your final brand assets are ready.",
+    "Adihit Capella supports businesses with practical advisory, accurate execution, and organised compliance systems that help teams move forward with confidence.",
   cta: { label: "Schedule Consultation", href: "/contact" },
   secondaryCta: { label: "Explore Services", href: "/services" },
-  tags: ["adihit capella", "ca firm", "consultancy", "legal advisory", "finance advisory"],
+  tags: ["adihit capella", "business advisory", "compliance", "finance consulting"],
   stats: [
-    { value: "360°", label: "Integrated advisory support" },
-    { value: "24/7", label: "Always-on contact pathways" },
-    { value: "8+", label: "Core service verticals" },
+    { value: "4", label: "Core service verticals" },
+    { value: "1", label: "Coordinated advisory partner" },
+    { value: "100%", label: "Process-focused execution" },
   ],
 };
 
-export const homeDifferenceCards: ValueCard[] = [
-  {
-    title: "Cross-functional expertise",
-    description:
-      "Bring tax, legal, finance, and governance thinking into one coordinated advisory flow.",
-  },
-  {
-    title: "Leadership-first communication",
-    description:
-      "Design pages and pathways that make decision-makers feel informed, guided, and in control.",
-  },
-  {
-    title: "Built for growth",
-    description:
-      "Start with structured placeholders today and scale to richer content, forms, and integrations later.",
-  },
+export const homeDifferenceIntro = [
+  "Businesses in search of accuracy and consistency can partner with Adihit Capella for compliant advisory support. Our focus lies on practical outcomes. This includes better control, clearer decisions and strong process.",
+  "Our team works multi-functional, with the objective of reducing complexity and increasing readiness. We create reliable systems that help teams and stakeholders to thrive and maintain long-term business sustainability.",
 ];
 
+export const homeDifferenceCards: ValueCard[] = [
+  {
+    title: "Expert Financial Guidance",
+    description:
+      "We bring hands-on help to improve control and connect financial activities with business goals, so you can carry your business forward with clarity.",
+  },
+  {
+    title: "End-to-End Compliance Support",
+    description:
+      "From business registration to filing and compliance, we help reduce missed deadlines, documentation gaps, and regulatory issues.",
+  },
+  {
+    title: "Timely & Accurate Execution",
+    description:
+      "Our processes keep work structured, documents complete, and communication clear so momentum is protected.",
+  },
+  {
+    title: "One-Stop Professional Solutions",
+    description:
+      "Coordinated audit, tax, finance, legal, accounting, and process support keeps accountability clear and saves time.",
+  },
+];
 export const presenceStats: StatItem[] = [
   { value: "12+", label: "Years of combined advisory exposure" },
   { value: "150+", label: "Engagement types supported" },
@@ -76,13 +85,13 @@ export const aboutInfoCards: InfoCard[] = [
     title: "Corporate legal precision",
     description:
       "Structure contracts, notices, and transactions with practical legal thinking and business context.",
-    cta: { label: "View legal services", href: "/services/legal-services" },
+    cta: { label: "View specialised services", href: "/services/specialised-business-compliance-services" },
   },
   {
     title: "Finance-backed growth planning",
     description:
       "Support expansion, cash flow, budgeting, valuation, and investment decisions with advisory discipline.",
-    cta: { label: "Explore consulting", href: "/services/financial-consulting" },
+    cta: { label: "Explore consulting", href: "/services/financial-consulting-services" },
   },
   {
     title: "Compliance confidence",
@@ -102,22 +111,22 @@ export const awards: AwardItem[] = [
 
 export const testimonials: Testimonial[] = [
   {
-    name: "Founder, Consumer Brand",
-    company: "FMCG Client",
+    name: "Rajesh Mehta",
+    company: "Director, Mehta Industries",
     review:
-      "The site structure mirrors the way Adihit Capella works in practice: proactive, organised, and commercially sharp. It feels premium without becoming distant.",
+      "Adihit Capella has been our trusted CA partner for over 5 years. Their expertise in tax planning saved us significantly and their team is always responsive.",
   },
   {
-    name: "Director, Logistics Group",
-    company: "Warehousing & Logistics",
+    name: "Priya Sharma",
+    company: "Founder, TechStart Solutions",
     review:
-      "We wanted legal, tax, and finance guidance to feel connected. The positioning and service flow communicate that blend very clearly.",
+      "Outstanding service! They handled our company registration, GST setup, and monthly compliance seamlessly. Highly professional team.",
   },
   {
-    name: "Co-founder, SaaS Venture",
-    company: "Technology Startup",
+    name: "Amit Patel",
+    company: "CEO, Patel Exports",
     review:
-      "The advisory story is modern, polished, and highly credible. It speaks to founders who need both compliance and growth thinking.",
+      "Their FEMA and NRI taxation expertise is top-notch. We have been handling all our international transactions with their guidance.",
   },
 ];
 
@@ -178,463 +187,253 @@ export const leaders: LeaderProfile[] = [
 
 export const serviceCategories: ServiceCategory[] = [
   {
-    slug: "income-tax-services",
-    title: "Income Tax Services",
-    subtitle: "Strategic direct tax planning and filing support for individuals, founders, and growing companies.",
-    summary:
-      "Cover return filing, scrutiny support, tax planning, NRI matters, appeals, and high-signal advisory for complex tax questions.",
-    phone: "+91 84338 80864",
-    overview: [
-      "Plan filings and advisory with a workflow that reduces last-minute risk and documentation stress.",
-      "Create a clearer line of sight across return accuracy, notices, capital gains, and long-term tax efficiency.",
-    ],
-    benefits: [
-      "ITR filing support from ITR-1 to ITR-7",
-      "Tax audit and scrutiny readiness",
-      "NRI taxation and capital gains advisory",
-      "Representation, appeals, and notice response support",
-    ],
-    differentiators: [
-      "Structured compliance calendars",
-      "Decision support for founders and HNIs",
-      "Practical response pathways for notices and scrutiny",
-    ],
-    promo: {
-      title: "Sharper income tax planning for every stage of growth",
-      description:
-        "Use this strip for a topical campaign, budget message, or seasonal filing push tied to your content calendar.",
-      cta: { label: "Talk to our advisors", href: "/contact" },
-    },
-    buildBetter: {
-      title: "Build better tax outcomes",
-      description:
-        "Adihit Capella combines filing accuracy with strategic interpretation, helping teams reduce exposure while preserving commercial momentum.",
-    },
-    accordion: [
-      {
-        title: "Return filing and review",
-        content:
-          "Prepare, review, and file returns with a process that is suitable for both simple and multi-entity situations.",
-      },
-      {
-        title: "Notice handling and scrutiny support",
-        content:
-          "Coordinate documentation, interpretation, and response timelines with clear ownership and escalation support.",
-      },
-      {
-        title: "Strategic tax planning",
-        content:
-          "Map planned transactions and investments against tax impact before decisions are finalised.",
-      },
-    ],
-    seo: {
-      title: "Income Tax Services | Adihit Capella",
-      description:
-        "Income tax filing, planning, scrutiny support, appeals, and NRI taxation advisory by Adihit Capella.",
-      keywords: ["income tax services", "tax advisory", "itr filing"],
-    },
-  },
-  {
-    slug: "gst-services",
-    title: "GST Services",
-    subtitle: "GST compliance, reporting, reconciliation, and advisory support built for operating discipline.",
-    summary:
-      "Streamline GST registration, filings, audits, refunds, ITC advisory, and notice handling with scalable workflows.",
-    phone: "+91 84338 80864",
-    overview: [
-      "Reduce compliance friction with a central structure for registration, filing cycles, and documentation readiness.",
-      "Support finance teams with cleaner reconciliations, sharper input credit visibility, and faster response handling.",
-    ],
-    benefits: [
-      "GST registration, amendment, and setup",
-      "Periodic return filing including GSTR-1, 3B, 9, and 9C",
-      "Audit, reconciliation, and refund processing support",
-      "ITC advisory, e-invoicing, and e-way bill enablement",
-    ],
-    differentiators: [
-      "Operating-model friendly filing support",
-      "Notice preparedness and audit defence",
-      "Data-led reconciliation mindset",
-    ],
-    promo: {
-      title: "Keep GST operations clean, scalable, and always inspection-ready",
-      description:
-        "Ideal for a future announcement about GST season, process redesign, or sector-specific compliance guidance.",
-      cta: { label: "Request GST consultation", href: "/contact" },
-    },
-    buildBetter: {
-      title: "Build better indirect tax control",
-      description:
-        "The focus is not just filing output, but process accuracy, credit discipline, and repeatable compliance hygiene.",
-    },
-    accordion: [
-      {
-        title: "Registration and setup",
-        content:
-          "Support the initial structure, amendment cycles, and implementation of GST compliance workflows across business units.",
-      },
-      {
-        title: "Returns and reconciliations",
-        content:
-          "Create a repeatable rhythm for periodic filings, data checks, and reconciliation-driven issue detection.",
-      },
-      {
-        title: "Refunds, notices, and audits",
-        content:
-          "Build response readiness for refunds, departmental communication, and GST audit scenarios.",
-      },
-    ],
-    seo: {
-      title: "GST Services | Adihit Capella",
-      description:
-        "GST registration, return filing, audit, reconciliation, refund, and advisory services by Adihit Capella.",
-      keywords: ["gst return filing", "gst registration", "gst audit"],
-    },
-  },
-  {
-    slug: "audit-and-assurance",
-    title: "Audit & Assurance",
-    subtitle: "Independent review frameworks that improve reporting confidence and operating trust.",
-    summary:
-      "Deliver statutory, internal, due diligence, bank, NGO, and process audits that align with real business decisions.",
-    phone: "+91 84338 80864",
-    overview: [
-      "Approach audits as strategic visibility tools instead of end-stage compliance burdens.",
-      "Support leadership with findings that identify risk, strengthen controls, and clarify next steps.",
-    ],
-    benefits: [
-      "Statutory audit and tax audit execution",
-      "Internal, bank, and due diligence audits",
-      "NGO/trust review support",
-      "System and process audit observations",
-    ],
-    differentiators: [
-      "Boardroom-friendly reporting",
-      "Operational risk visibility",
-      "Evidence-backed improvement recommendations",
-    ],
-    promo: {
-      title: "Move from audit completion to actionable assurance",
-      description:
-        "A good slot for a campaign on risk governance, reporting maturity, or transaction readiness.",
-      cta: { label: "Speak with audit specialists", href: "/contact" },
-    },
-    buildBetter: {
-      title: "Build better assurance outcomes",
-      description:
-        "Audit work should produce clarity and confidence, not only checklists. This template is designed to present that value cleanly.",
-    },
-    accordion: [
-      {
-        title: "Assurance design",
-        content:
-          "Scope the engagement around statutory obligations, operational risks, and stakeholder expectations.",
-      },
-      {
-        title: "Fieldwork and findings",
-        content:
-          "Document observations in a structured way that can be understood by both finance and leadership teams.",
-      },
-      {
-        title: "Remediation support",
-        content:
-          "Translate findings into process actions, control improvements, and reporting recommendations.",
-      },
-    ],
-    seo: {
-      title: "Audit & Assurance Services | Adihit Capella",
-      description:
-        "Statutory, internal, tax, GST, bank, and process audit services designed for stronger reporting and controls.",
-      keywords: ["audit and assurance", "internal audit", "statutory audit"],
-    },
-  },
-  {
-    slug: "accounting-and-bookkeeping",
-    title: "Accounting & Bookkeeping",
-    subtitle: "Reliable accounting support for founders and finance teams that need control without operational drag.",
-    summary:
-      "Handle monthly books, finalisation, MIS reporting, P&L preparation, and virtual CFO support through structured delivery.",
-    phone: "+91 84338 80864",
-    overview: [
-      "Present finance operations as a strategic backbone rather than a back-office obligation.",
-      "Support leaders with timely numbers, cleaner reports, and stronger month-end confidence.",
-    ],
-    benefits: [
-      "Monthly bookkeeping and account finalisation",
-      "Balance sheet and P&L preparation",
-      "MIS reporting and finance dashboards",
-      "Virtual CFO support for growth-stage teams",
-    ],
-    differentiators: [
-      "Founder-friendly finance reporting",
-      "Reliable month-end routines",
-      "Scalable bookkeeping structures",
-    ],
-    promo: {
-      title: "Finance operations that stay decision-ready",
-      description:
-        "Use this area for a positioning message around MIS, CFO support, reporting quality, or cash visibility.",
-      cta: { label: "Book a finance review", href: "/contact" },
-    },
-    buildBetter: {
-      title: "Build better reporting discipline",
-      description:
-        "The site language here is designed to reassure business owners that clean books and strong reporting can coexist with growth.",
-    },
-    accordion: [
-      {
-        title: "Daily and monthly accounting rhythm",
-        content:
-          "Create predictable bookkeeping cycles with clearer responsibilities and cleaner supporting schedules.",
-      },
-      {
-        title: "Management reporting and MIS",
-        content:
-          "Translate raw accounting data into management-ready insight with structured reports and summaries.",
-      },
-      {
-        title: "Virtual CFO support",
-        content:
-          "Add higher-order thinking around budgeting, working capital, and financial prioritisation without building a full in-house team.",
-      },
-    ],
-    seo: {
-      title: "Accounting & Bookkeeping Services | Adihit Capella",
-      description:
-        "Bookkeeping, MIS, financial reporting, account finalisation, and virtual CFO services for growing businesses.",
-      keywords: ["bookkeeping services", "virtual cfo", "mis reporting"],
-    },
-  },
-  {
     slug: "company-registration-and-startup-services",
     title: "Company Registration & Startup Services",
-    subtitle: "Launch-ready advisory for founders building formal, compliant, and investor-aware operating structures.",
+    subtitle: "Registration support, documentation guidance, and compliance-ready setup for new and growing businesses.",
     summary:
-      "Support company setup, LLP and partnership registrations, startup recognition, trademarking, PAN/TAN, IEC, and more.",
+      "Give your business a professional start with clear registration support, documentation guidance, and compliance-ready setup. From entity selection to filings and essential regulations, we help you begin operations with a strong foundation.",
     phone: "+91 84338 80864",
     overview: [
-      "Guide founders from idea-stage structure decisions to the practical compliance tasks needed for launch.",
-      "Use this section to highlight clarity, speed, and confidence during early-stage setup.",
+      "Most businesses get the paperwork done. Fewer get it done correctly from the start. At Adihit Capella, we help startups, entrepreneurs, and growing businesses register, document, and comply in the right order with the right filings.",
+      "Registering a business is step one, but the decisions made at that stage affect taxes, funding, ownership rights, liability, and operating flexibility for years.",
+      "We guide founders and business owners through entity selection, documentation, authority coordination, and filings so the regulatory burden does not slow the launch.",
+      "Beyond registration, we support PAN, TAN, MSME recognition, Startup India certification, trademarks, and Import-Export Codes depending on the nature of operations.",
     ],
     benefits: [
-      "Private limited, LLP, partnership, and OPC registration",
-      "Startup India and MSME registration",
-      "PAN, TAN, shop act, and IEC support",
-      "Trademark and foundational compliance setup",
+      "Private Limited Company Registration",
+      "LLP Registration",
+      "Partnership Firm Registration",
+      "One Person Company Registration",
+      "Startup India Registration",
+      "MSME Registration",
+      "Trademark Registration",
     ],
     differentiators: [
-      "Founder-first setup guidance",
-      "Entity choice support with future-state thinking",
-      "Connected legal and finance advisory",
+      "Entity selection guidance",
+      "Compliance-ready setup",
+      "Founder-focused documentation",
     ],
     promo: {
-      title: "Help new ventures launch with fewer blind spots",
+      title: "Start with a structure that can support future growth",
       description:
-        "Position this space around speed to launch, investor readiness, or simplified compliance for founders.",
+        "Clean registration and early compliance create credibility with banks, investors, vendors, and future stakeholders.",
       cta: { label: "Discuss your startup setup", href: "/contact" },
     },
     buildBetter: {
-      title: "Build better foundations",
+      title: "Key services",
       description:
-        "This service story is designed to make complex setup work feel credible, modern, and founder-friendly.",
+        "Registration and setup support designed to reduce delays, avoid errors, and give the business a stronger foundation from day one.",
     },
     accordion: [
       {
-        title: "Entity selection and registration",
+        title: "Private Limited Company Registration",
         content:
-          "Match the structure to ownership, tax, governance, and fundraising goals before registration begins.",
+          "We support incorporation, documentation, MoA and AoA drafting, and MCA coordination so your company is registered correctly from the start.",
       },
       {
-        title: "Initial compliance stack",
+        title: "LLP, Partnership, and OPC Registration",
         content:
-          "Support the first layer of registrations, filings, and documentation needed for day-one operations.",
+          "We help with LLP agreements, DPIN applications, partnership deed drafting, firm registration, and OPC incorporation documentation.",
       },
       {
-        title: "Founder advisory",
+        title: "Startup, MSME, Trademark, and allied registrations",
         content:
-          "Provide guidance on practical next steps, from bookkeeping and GST to early-stage finance readiness.",
+          "We manage Startup India, MSME, trademark, PAN, TAN, and other setup registrations accurately and efficiently.",
       },
     ],
     seo: {
       title: "Company Registration & Startup Services | Adihit Capella",
       description:
-        "Company registration, LLP setup, Startup India registration, trademark, PAN/TAN, and startup advisory support.",
+        "Company registration, LLP setup, Startup India, MSME, trademark, PAN, TAN, and compliance-ready startup support.",
       keywords: ["company registration", "startup services", "llp registration"],
+    },
+  },
+  {
+    slug: "financial-consulting-services",
+    title: "Financial Consulting Services",
+    subtitle: "Practical financial consulting for budgeting, forecasting, cash flow, loan support, and investment planning.",
+    summary:
+      "Better planning and cash flow management are critical for informed business decisions. We guide budgeting, forecasting, loan support, investment planning, and cost control to improve stability and long-term readiness.",
+    phone: "+91 84338 80864",
+    overview: [
+      "Financial decisions shape every part of a business, from day-to-day operations to long-term direction. We help businesses bring structure to their finances and make decisions backed by numbers, not assumptions.",
+      "Most businesses reach a point where financial management becomes more complex than a spreadsheet can handle. Revenue grows, expenses multiply, loan requirements appear, and cash flow becomes harder to track.",
+      "Our work looks at where money is going, where it should go, and what needs to change across budgeting discipline, cost structure, funding strategy, and reporting clarity.",
+      "We assist with financial planning, budgeting, forecasting, CMA preparation, investment planning, cost reduction opportunities, and startup funding documentation.",
+    ],
+    benefits: [
+      "Financial Planning",
+      "Cash Flow Management",
+      "Business Setup Advisory",
+      "Budgeting & Forecasting",
+      "Loan & CMA Preparation",
+      "Cost Reduction Strategy",
+      "Startup Funding Support",
+    ],
+    differentiators: [
+      "Clear financial visibility",
+      "Practical recommendations",
+      "Decision-ready reporting",
+    ],
+    promo: {
+      title: "Make financial decisions with clearer numbers",
+      description:
+        "Structured consulting helps leaders understand their finances, protect liquidity, and plan with greater confidence.",
+      cta: { label: "Book a finance review", href: "/contact" },
+    },
+    buildBetter: {
+      title: "Key services",
+      description:
+        "Financial consulting that keeps analysis straightforward, communication direct, and recommendations useful for real business decisions.",
+    },
+    accordion: [
+      {
+        title: "Financial planning and cash flow management",
+        content:
+          "We build practical financial plans and monitor inflows and outflows so liquidity can be protected without disrupting operations.",
+      },
+      {
+        title: "Budgeting, forecasting, loan, and CMA support",
+        content:
+          "We set realistic financial targets, adjust forecasts as conditions change, and prepare CMA data and loan documentation for lender requirements.",
+      },
+      {
+        title: "Cost reduction and startup funding support",
+        content:
+          "We analyse cost structures and help startups prepare projections and pitch-ready documentation that can stand up to review.",
+      },
+    ],
+    seo: {
+      title: "Financial Consulting Services | Adihit Capella",
+      description:
+        "Financial planning, cash flow management, budgeting, forecasting, CMA, cost reduction, and startup funding support.",
+      keywords: ["financial consulting", "cash flow management", "business valuation"],
+    },
+  },
+  {
+    slug: "specialised-business-compliance-services",
+    title: "Specialised Business & Compliance Services",
+    subtitle: "Specialised advisory for internal controls, workflow controls, fraud risk, FEMA, RBI, NRI, and restructuring matters.",
+    summary:
+      "Evolving operations need support that emphasises compliance, restructuring, and control-focused advisory. We help build internal control systems, workflow controls, and fraud risk management measures for stronger compliance outcomes.",
+    phone: "+91 84338 80864",
+    overview: [
+      "Routine compliance covers only part of what a growing business actually needs. As operations expand, companies face pressure to improve internal processes, control risk, stay current with regulations, and respond to structural change.",
+      "We support internal control system setup, operational workflow controls, fraud risk management, and compliance controls for Indian companies.",
+      "For companies with cross-border activity, we handle FEMA and RBI compliance, NRI compliance matters, and business restructuring advisory.",
+      "Our experts work directly with management teams to understand how the business operates, find practical improvements, and build systems that stay useful beyond the initial engagement.",
+    ],
+    benefits: [
+      "NRI Compliance Services",
+      "FEMA & RBI Compliance",
+      "Internal Control System Setup",
+      "Operational Workflow Controls",
+      "Fraud Risk Management",
+      "Business Restructuring Advisory",
+      "Compliance Controls for Indian Companies",
+    ],
+    differentiators: [
+      "Control-focused advisory",
+      "Indian compliance context",
+      "Management-level process support",
+    ],
+    promo: {
+      title: "Strengthen the systems behind everyday compliance",
+      description:
+        "Better controls reduce reporting errors, improve financial oversight, and bring discipline to functions that often go unmanaged as businesses scale.",
+      cta: { label: "Strengthen your controls", href: "/contact" },
+    },
+    buildBetter: {
+      title: "Key services",
+      description:
+        "Specialised business and compliance support built for Indian businesses operating in a changing regulatory environment.",
+    },
+    accordion: [
+      {
+        title: "NRI, FEMA, and RBI compliance",
+        content:
+          "We manage overseas regulatory reporting and cross-border compliance requirements so foreign transactions and ownership matters are handled without avoidable delays.",
+      },
+      {
+        title: "Internal controls and workflow controls",
+        content:
+          "We bring structure to day-to-day operational and reporting functions, reducing inconsistencies and improving routine execution.",
+      },
+      {
+        title: "Fraud risk, restructuring, and company controls",
+        content:
+          "We support fraud risk management, business restructuring, and practical compliance frameworks for Indian companies.",
+      },
+    ],
+    seo: {
+      title: "Specialised Business & Compliance Services | Adihit Capella",
+      description:
+        "Internal controls, workflow controls, fraud risk management, FEMA, RBI, NRI compliance, and restructuring advisory.",
+      keywords: ["compliance consulting", "internal control", "fema rbi compliance"],
     },
   },
   {
     slug: "roc-and-compliance-services",
     title: "ROC & Compliance Services",
-    subtitle: "Corporate compliance management for companies that need consistency, visibility, and lower execution risk.",
+    subtitle: "ROC filing, director KYC, LLP returns, statutory updates, and MCA compliance handled with accuracy.",
     summary:
-      "Manage annual filings, director KYC, LLP filing, share transfer compliance, and corporate change events with confidence.",
+      "Our experts take care of ROC and compliance requirements with accuracy and timely follow-through. Whether it is annual filings, director KYC, or LLP returns, we help your business remain organised and reduce compliance risk.",
     phone: "+91 84338 80864",
     overview: [
-      "Position governance as a smooth operating system rather than an afterthought.",
-      "Keep boards, founders, and finance teams aligned around recurring corporate compliance responsibilities.",
+      "Corporate compliance is not a task performed once a year. It is an ongoing responsibility that needs recurring attention and accurate documentation.",
+      "Every company and LLP registered under the Ministry of Corporate Affairs must meet recurring obligations including annual filings, statutory records, and timely reporting of company changes.",
+      "We handle ROC compliance across all stages of a company's lifecycle, including annual returns, financial statement submissions, director KYC, share transfer documentation, and event-based statutory filings.",
+      "In addition to filings, we help improve internal compliance controls so documentation practices, filing workflows, and coordination reduce last-minute corrections.",
     ],
     benefits: [
-      "Annual filing including AOC-4 and MGT-7",
-      "Director KYC and event-based updates",
-      "Share transfer and address/director changes",
-      "LLP annual compliance support",
+      "Annual ROC Filing",
+      "Director KYC Compliance",
+      "LLP Annual Filing",
+      "Change in Directors",
+      "Registered Office Changes",
+      "Share Transfer Compliance",
     ],
     differentiators: [
-      "Calendar-led compliance discipline",
-      "Clear visibility on event-based filings",
-      "Structured documentation tracking",
+      "Reliable MCA filings",
+      "Deadline-focused execution",
+      "Clear statutory documentation",
     ],
     promo: {
-      title: "Stay ahead of ROC obligations with cleaner governance routines",
+      title: "Keep corporate compliance current and organised",
       description:
-        "A strong spot for future communication around annual filing season, board governance, or corporate housekeeping.",
-      cta: { label: "Strengthen compliance", href: "/contact" },
+        "Clear processes, accurate paperwork, and reliable follow-through mean compliance is not a recurring source of stress.",
+      cta: { label: "Request ROC support", href: "/contact" },
     },
     buildBetter: {
-      title: "Build better governance discipline",
+      title: "Key services",
       description:
-        "The design of this page balances authority and approachability, especially for mid-market and founder-led businesses.",
+        "ROC and MCA compliance support for recurring filings, statutory changes, director updates, and corporate documentation.",
     },
     accordion: [
       {
-        title: "Annual corporate filings",
+        title: "Annual ROC filing and LLP annual filing",
         content:
-          "Coordinate recurring statutory submissions with a consistent preparation and review cycle.",
+          "We prepare and file AOC-4, MGT-7, Form 8, Form 11, and mandatory annual compliance forms as applicable.",
       },
       {
-        title: "Event-based compliance",
+        title: "Director KYC and director changes",
         content:
-          "Support changes in directors, registered address, shareholding, or ownership structure with timely execution.",
+          "We manage DIR-3 KYC and DIN-related updates with the correct documentation and timelines.",
       },
       {
-        title: "Governance support",
+        title: "Registered office and share transfer compliance",
         content:
-          "Improve filing visibility and internal preparedness with better timelines, records, and accountability.",
+          "We handle MCA filings, board approvals, and required ROC reporting for office changes and share transfer matters.",
       },
     ],
     seo: {
       title: "ROC & Compliance Services | Adihit Capella",
       description:
-        "Annual ROC filing, director KYC, LLP compliance, share transfer, and corporate housekeeping support.",
+        "ROC annual filing, director KYC, LLP filing, registered office changes, share transfer compliance, and MCA support.",
       keywords: ["roc compliance", "annual filing", "director kyc"],
     },
   },
-  {
-    slug: "financial-consulting",
-    title: "Financial Consulting",
-    subtitle: "Advisory support for growth planning, valuation, funding readiness, and sharper financial decisions.",
-    summary:
-      "Help organisations plan business setup, project reports, loan/CMA data, financial planning, valuation, cash flow, and budgets.",
-    phone: "+91 84338 80864",
-    overview: [
-      "Use this page to communicate strategy, modelling, and decision support for businesses that need more than routine compliance.",
-      "Blend commercial clarity with finance discipline across growth, cost, and capital decisions.",
-    ],
-    benefits: [
-      "Business setup and project report preparation",
-      "Loan, CMA data, and funding support",
-      "Cash flow, budgeting, and forecasting",
-      "Valuation, planning, and cost optimisation advisory",
-    ],
-    differentiators: [
-      "Founder and CFO aligned decision support",
-      "Growth-stage planning with finance rigour",
-      "Flexible advisory structure",
-    ],
-    promo: {
-      title: "Translate finance into practical decisions and investor-ready communication",
-      description:
-        "Ideal for future positioning around capital planning, valuation, or performance improvement advisory.",
-      cta: { label: "Explore finance consulting", href: "/contact" },
-    },
-    buildBetter: {
-      title: "Build better business outcomes",
-      description:
-        "This section is intentionally framed around decision quality, not only reporting outputs, to strengthen premium positioning.",
-    },
-    accordion: [
-      {
-        title: "Planning and modelling",
-        content:
-          "Support budgets, forecasts, cash flow plans, and scenario thinking with structured financial models.",
-      },
-      {
-        title: "Funding and lender readiness",
-        content:
-          "Prepare CMA data, project reports, and narratives that make financial logic easier to present externally.",
-      },
-      {
-        title: "Performance improvement",
-        content:
-          "Identify cost, margin, and cash conversion opportunities through a business-aware financial lens.",
-      },
-    ],
-    seo: {
-      title: "Financial Consulting | Adihit Capella",
-      description:
-        "Financial planning, valuation, cash flow, project reports, CMA data, and startup funding support.",
-      keywords: ["financial consulting", "business valuation", "cash flow management"],
-    },
-  },
-  {
-    slug: "legal-services",
-    title: "Legal Services",
-    subtitle: "Corporate and dispute advisory for businesses operating in regulated, high-stakes, or fast-moving environments.",
-    summary:
-      "Cover litigation, arbitration, employment, privacy, M&A, restructuring, white collar matters, commercial law, and more.",
-    phone: "+91 84338 80864",
-    overview: [
-      "Showcase legal capability with a structure that feels strategic, corporate, and decision-maker friendly.",
-      "Connect legal services to transactions, compliance, disputes, labour, data protection, and sector-specific issues.",
-    ],
-    benefits: [
-      "Litigation, arbitration, and dispute resolution",
-      "Corporate, commercial, M&A, and private equity support",
-      "Employment, labour, privacy, and data protection",
-      "Real estate, banking, NBFC, white collar, and restructuring advisory",
-    ],
-    differentiators: [
-      "Commercially aware legal positioning",
-      "Multi-domain coverage for modern businesses",
-      "Structured escalation and response support",
-    ],
-    promo: {
-      title: "Legal strategy that supports operations, transactions, and risk management together",
-      description:
-        "Use this strip for thought leadership on regulation, disputes, M&A, or legal risk preparedness.",
-      cta: { label: "Connect with legal advisors", href: "/contact" },
-    },
-    buildBetter: {
-      title: "Build better legal resilience",
-      description:
-        "The page design is tailored to position legal services as high-value strategic advisory, not just reactive support.",
-    },
-    accordion: [
-      {
-        title: "Corporate and commercial",
-        content:
-          "Support transactions, contracts, governance, restructuring, and day-to-day legal decision-making.",
-      },
-      {
-        title: "Dispute and regulatory response",
-        content:
-          "Create clearer pathways for escalation, representation, and issue management when risk surfaces.",
-      },
-      {
-        title: "Sector-specific legal support",
-        content:
-          "Shape legal execution around industry realities such as finance, real estate, employment, and privacy.",
-      },
-    ],
-    seo: {
-      title: "Legal Services | Adihit Capella",
-      description:
-        "Corporate legal, disputes, M&A, labour, privacy, banking, real estate, and regulatory advisory services.",
-      keywords: ["legal consultancy", "corporate legal", "dispute resolution"],
-    },
-  },
 ];
-
 export const industryEntries: IndustryEntry[] = [
   {
     slug: "fmcg-and-consumer-goods",

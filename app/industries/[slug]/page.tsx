@@ -154,6 +154,10 @@ export default async function IndustryDetailPage({
                 <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
                   {item.description}
                 </p>
+                <span className="card-read-more mt-5 inline-flex items-center gap-2 text-sm font-medium">
+                  Read more
+                  <ArrowRight className="h-4 w-4" />
+                </span>
               </Link>
             </Reveal>
           ))}

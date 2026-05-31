@@ -57,6 +57,10 @@ export default function CareersPage() {
                 <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
                   {card.description}
                 </p>
+                <span className="card-read-more mt-5 inline-flex items-center gap-2 text-sm font-medium">
+                  Read more
+                  <ArrowRight className="h-4 w-4" />
+                </span>
               </Link>
             </Reveal>
           ))}

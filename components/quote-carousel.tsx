@@ -1,7 +1,4 @@
-"use client";
-
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { useEffect, useEffectEvent, useState } from "react";
+import { Star } from "lucide-react";
 
 import type { Testimonial } from "@/lib/types";
 
@@ -10,70 +7,49 @@ type QuoteCarouselProps = {
 };
 
 export function QuoteCarousel({ items }: QuoteCarouselProps) {
-  const [index, setIndex] = useState(0);
-
-  const advance = useEffectEvent(() => {
-    setIndex((current) => (current + 1) % items.length);
-  });
-
-  useEffect(() => {
-    const timer = window.setInterval(() => advance(), 4500);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const active = items[index];
+  const visibleItems = items.slice(0, 3);
 
   return (
-    <div className="surface-card overflow-hidden p-6 md:p-8">
-      <div className="flex items-center justify-between gap-4">
-        <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(151,201,255,0.18)] px-4 py-2 text-sm text-[var(--brand)]">
-          <Quote className="h-4 w-4" />
-          Client voice
-        </div>
-        <div className="flex gap-2">
-          <button
-            type="button"
-            className="rounded-full border border-[rgba(151,201,255,0.18)] p-3 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
-            onClick={() =>
-              setIndex((current) => (current - 1 + items.length) % items.length)
-            }
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </button>
-          <button
-            type="button"
-            className="rounded-full border border-[rgba(151,201,255,0.18)] p-3 transition hover:border-[var(--brand)] hover:text-[var(--brand)]"
-            onClick={() => setIndex((current) => (current + 1) % items.length)}
-            aria-label="Next testimonial"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </button>
-        </div>
+    <div>
+      <div className="mb-12 text-center">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7ec8ff]">
+          Client reviews
+        </p>
+        <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#fff] md:text-4xl">
+          What Our Clients Say
+        </h2>
       </div>
-      <blockquote className="mt-8 max-w-4xl text-xl leading-9 text-white md:text-3xl">
-        “{active?.review}”
-      </blockquote>
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <p className="font-medium text-white">{active?.name}</p>
-          <p className="text-sm text-[var(--muted)]">{active?.company}</p>
-        </div>
-        <div className="flex gap-2">
-          {items.map((item, itemIndex) => (
-            <button
-              key={item.name}
-              type="button"
-              className={`h-2.5 rounded-full transition ${
-                itemIndex === index
-                  ? "w-10 bg-[var(--brand)]"
-                  : "w-2.5 bg-[rgba(151,201,255,0.25)]"
-              }`}
-              onClick={() => setIndex(itemIndex)}
-              aria-label={`View testimonial ${itemIndex + 1}`}
-            />
-          ))}
-        </div>
+      <div className="grid gap-6 lg:grid-cols-3">
+        {visibleItems.map((item, index) => (
+          <article
+            key={item.name}
+            className={`border bg-[#20375d] p-8 ${
+              index === 1 ? "border-[#3d8fe8]" : "border-[#385071]"
+            }`}
+          >
+            <div className="flex gap-1 text-[#ffd338]" aria-label="5 star review">
+              {Array.from({ length: 5 }).map((_, starIndex) => (
+                <Star
+                  key={starIndex}
+                  className="h-4 w-4 fill-current"
+                  strokeWidth={0}
+                />
+              ))}
+            </div>
+            <blockquote className="mt-5 text-sm font-semibold italic leading-7 text-blue-50">
+              &quot;{item.review}&quot;
+            </blockquote>
+            <div className="mt-7 flex items-center gap-4">
+              <div className="grid h-11 w-11 place-items-center bg-[#3d8fe8] text-sm font-bold text-[#fff]">
+                {item.name.charAt(0)}
+              </div>
+              <div>
+                <p className="text-sm font-bold text-[#fff]">{item.name}</p>
+                <p className="text-xs text-blue-200">{item.company}</p>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   );

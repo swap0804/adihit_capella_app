@@ -101,8 +101,8 @@ export default async function ServiceDetailPage({
         <div className="hero-grid items-center">
           <Reveal>
             <SectionHeading
-              eyebrow="Service information"
-              title="Detailed service positioning with room for your final expertise copy."
+              eyebrow="About the service"
+              title={service.title}
               description={service.summary}
             />
             <div className="grid gap-4">
@@ -128,7 +128,7 @@ export default async function ServiceDetailPage({
         <div className="surface-card flex flex-col items-start justify-between gap-5 p-6 md:flex-row md:items-center md:p-8">
           <div>
             <p className="text-sm uppercase tracking-[0.18em] text-[var(--brand)]">
-              Promotional text
+              Advisory focus
             </p>
             <h2 className="mt-3 text-2xl font-semibold text-white">
               {service.promo.title}
@@ -167,8 +167,8 @@ export default async function ServiceDetailPage({
       <section className="section-shell">
         <SectionHeading
           eyebrow="Detail information"
-          title="Expandable rows ready for process details, FAQs, or deeper service explanations."
-          description="This accordion pattern follows the corporate reference style while keeping the implementation lightweight and easy to update."
+          title="How we support this service"
+          description="A closer look at the practical service areas covered within this engagement."
         />
         <AccordionList items={service.accordion} />
       </section>
