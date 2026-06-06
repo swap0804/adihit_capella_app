@@ -12,7 +12,7 @@ import { serviceCategories } from "@/lib/content";
 export const metadata = createMetadata({
   title: "Services",
   description:
-    "Explore Adihit Capella services for company registration, financial consulting, specialised compliance, and ROC compliance.",
+    "Explore Adihit Capella services across company registration, finance, accounting, audit, GST, income tax, legal, and business compliance.",
   path: "/services",
 });
 
@@ -62,7 +62,7 @@ export default function ServicesPage() {
       <section className="section-shell">
         <SectionHeading
           eyebrow="Service categories"
-          title="Four services for modern business requirements."
+          title="Nine services for modern business requirements."
           description="Each card links to a focused service page with deeper details and key service lists."
         />
         <div className="grid gap-4 md:grid-cols-2">
@@ -75,18 +75,13 @@ export default function ServicesPage() {
                   heightClassName="min-h-[200px]"
                   media={getMediaForKeywords(service.seo.keywords)}
                 />
-                <div className="mt-5 flex items-start justify-between gap-5">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white">
-                      {service.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-[#111827]">
-                      {service.subtitle}
-                    </p>
-                  </div>
-                  <div className="border border-[rgba(151,201,255,0.18)] px-4 py-2 text-xs uppercase tracking-[0.18em] text-[var(--brand)]">
-                    {service.phone}
-                  </div>
+                <div className="mt-5">
+                  <h3 className="text-2xl font-bold text-white">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[#111827]">
+                    {service.subtitle}
+                  </p>
                 </div>
                 <p className="mt-5 flex-1 text-sm leading-7 text-[#111827]">
                   {service.summary}

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 import { ContactForm } from "@/components/contact-form";
+import { HomeServicesCarousel } from "@/components/home-services-carousel";
 import { PageHero } from "@/components/page-hero";
 import { PlaceholderMedia } from "@/components/placeholder-media";
 import { QuoteCarousel } from "@/components/quote-carousel";
@@ -61,35 +62,7 @@ export default function HomePage() {
             Our services are designed to keep your operations clear and organised. Trust our experts for practical, process-driven services that shape long-term business readiness.
           </p>
         </div>
-        <div className="grid gap-4 lg:grid-cols-4">
-          {serviceCategories.map((service, index) => (
-            <Reveal key={service.slug} delay={index * 70}>
-              <article className="surface-card flex h-full flex-col p-4 service-card">
-                <PlaceholderMedia
-                  label={service.title}
-                  detail={service.subtitle}
-                  heightClassName="min-h-[220px]"
-                  media={getMediaForKeywords(service.seo.keywords)}
-                />
-                <div className="mt-5 flex flex-1 flex-col">
-                  <h3 className="text-2xl font-bold text-white">
-                    {service.title}
-                  </h3>
-                  <p className="mt-3 flex-1 text-sm leading-7 text-[#111827]">
-                    {service.summary}
-                  </p>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="card-read-more mt-5 inline-flex items-center gap-2 text-sm font-medium"
-                  >
-                    Read more
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+        <HomeServicesCarousel services={serviceCategories} />
       </section>
 
       <section className="section-shell">

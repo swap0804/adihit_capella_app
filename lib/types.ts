@@ -41,7 +41,6 @@ export type ServiceCategory = {
   title: string;
   subtitle: string;
   summary: string;
-  phone: string;
   overview: string[];
   benefits: string[];
   differentiators: string[];
@@ -58,6 +57,24 @@ export type ServiceCategory = {
     title: string;
     content: string;
   }>;
+  offerings?: Array<{
+    title: string;
+    content: string;
+  }>;
+  whyChoose?: Array<{
+    title: string;
+    content: string;
+  }>;
+  faqs?: Array<{
+    title: string;
+    content: string;
+  }>;
+  finalCta?: {
+    title: string;
+    description: string;
+    label: string;
+    href: string;
+  };
   seo: SeoConfig;
 };
 

@@ -167,11 +167,69 @@ export default async function ServiceDetailPage({
       <section className="section-shell">
         <SectionHeading
           eyebrow="Detail information"
-          title="How we support this service"
-          description="A closer look at the practical service areas covered within this engagement."
+          title={service.offerings ? "Service offering details" : "How we support this service"}
+          description={
+            service.offerings
+              ? "A detailed look at the professional support available within this service."
+              : "A closer look at the practical service areas covered within this engagement."
+          }
         />
-        <AccordionList items={service.accordion} />
+        <AccordionList items={service.offerings ?? service.accordion} />
       </section>
+
+      {service.whyChoose?.length ? (
+        <section className="section-shell">
+          <SectionHeading
+            eyebrow="Why Adihit Capella"
+            title="Why choose Adihit Capella?"
+            description="Professional support designed around accuracy, practical execution, and dependable follow-through."
+          />
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {service.whyChoose.map((item, index) => (
+              <Reveal key={item.title} delay={index * 60}>
+                <article className="surface-card h-full p-5">
+                  <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
+                    {item.content}
+                  </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {service.faqs?.length ? (
+        <section className="section-shell">
+          <SectionHeading
+            eyebrow="FAQs"
+            title={`Frequently asked questions about ${service.title}`}
+            description="Clear answers to common questions about scope, compliance, and engagement requirements."
+          />
+          <AccordionList items={service.faqs} />
+        </section>
+      ) : null}
+
+      {service.finalCta ? (
+        <section className="section-shell pt-0">
+          <div className="surface-card flex flex-col items-start justify-between gap-6 p-6 md:flex-row md:items-center md:p-8">
+            <div>
+              <h2 className="text-2xl font-semibold text-white">
+                {service.finalCta.title}
+              </h2>
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--muted)]">
+                {service.finalCta.description}
+              </p>
+            </div>
+            <Link
+              href={service.finalCta.href}
+              className="inline-flex shrink-0 items-center rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950"
+            >
+              {service.finalCta.label}
+            </Link>
+          </div>
+        </section>
+      ) : null}
     </>
   );
 }
