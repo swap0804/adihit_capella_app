@@ -71,34 +71,64 @@ export default function HomePage() {
         <HomeServicesCarousel services={serviceCategories} />
       </section>
 
-      <section className='section-shell'>
-        <div className='hero-grid items-start'>
-          <Reveal>
-            <SectionHeading
-              eyebrow='Adihit Capella difference'
-              title='The Adihit Capella Difference'
-              description={homeDifferenceIntro.join(' ')}
-            />
-          </Reveal>
-          <div className='grid gap-4'>
-            {homeDifferenceCards.map((item, index) => (
-              <Reveal key={item.title} delay={index * 90}>
-                <div className='surface-card p-5'>
-                  <div className='inline-flex items-center gap-3'>
-                    <div className='grid h-10 w-10 place-items-center rounded-full bg-[rgba(106,214,255,0.12)] text-[var(--brand)]'>
+      <section className='bg-[#eaf5ff] px-5 py-16 md:px-8 md:py-20'>
+        <div className='mx-auto grid max-w-[var(--max-width)] gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center'>
+          <div>
+            <Reveal>
+              <p className='text-xs font-bold uppercase tracking-[0.18em] text-[#1976d2]'>
+                Why choose us
+              </p>
+              <h2 className='mt-3 text-3xl font-bold leading-tight text-[#082a5c] md:text-5xl'>
+                The Adihit Capella Difference
+              </h2>
+              <p className='mt-5 max-w-2xl text-base leading-7 text-[#49627d]'>
+                {homeDifferenceIntro.join(' ')}
+              </p>
+            </Reveal>
+
+            <div className='mt-8 grid gap-4 sm:grid-cols-2'>
+              {homeDifferenceCards.map((item, index) => (
+                <Reveal key={item.title} delay={index * 70}>
+                  <article className='flex h-full gap-4 border-l-[3px] border-[#2587df] bg-white p-5 shadow-[0_8px_24px_rgba(21,81,137,0.06)]'>
+                    <div className='grid h-10 w-10 shrink-0 place-items-center bg-[#edf7ff] text-[#2587df]'>
                       <CheckCircle2 className='h-5 w-5' />
                     </div>
-                    <h3 className='text-lg font-semibold text-white'>
-                      {item.title}
-                    </h3>
-                  </div>
-                  <p className='mt-4 text-sm leading-7 text-[var(--muted)]'>
-                    {item.description}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+                    <div>
+                      <h3 className='text-sm font-bold leading-5 text-[#082a5c]'>
+                        {item.title}
+                      </h3>
+                      <p className='mt-2 text-xs leading-5 text-[#587088]'>
+                        {item.description}
+                      </p>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
           </div>
+
+          <Reveal delay={100}>
+            <div className='relative pb-12 pl-0 md:pl-8'>
+              <PlaceholderMedia
+                label='Adihit Capella team collaboration'
+                detail='Professionals collaborating around a meeting table.'
+                heightClassName='min-h-[420px] md:min-h-[520px]'
+                media={getMediaBySlug(
+                  'company-registration-and-startup-services',
+                )}
+              />
+              <div className='absolute bottom-0 left-0 z-20 min-w-[155px] bg-[#082a5c] px-6 py-7 text-white md:min-w-[180px]'>
+                <div className='text-[2.15rem] font-bold leading-none tracking-tight text-[#69bfff]'>
+                  12+
+                </div>
+                <div className='mt-2 text-[0.72rem] font-medium leading-[1.45] !text-[#ffffff]'>
+                  Years of combined
+                  <br />
+                  advisory exposure
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -120,6 +150,8 @@ export default function HomePage() {
                   detail='Featured image placeholder'
                   heightClassName='min-h-[180px]'
                   media={getMediaForKeywords(post.seo.keywords)}
+                  bottomGradient
+                  sideGradient
                 />
                 <div className='mt-5'>
                   <p className='text-sm uppercase tracking-[0.18em] text-[var(--brand)]'>

@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { ThemeProvider } from "@/components/theme-provider";
+import { serviceCategories } from "@/lib/content";
 import { createOrganizationSchema } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 import {
@@ -57,7 +58,12 @@ export default function RootLayout({
         <StructuredData data={createOrganizationSchema()} />
         <ThemeProvider>
           <div className="page-shell">
-            <SiteHeader />
+            <SiteHeader
+              services={serviceCategories.map((service) => ({
+                label: service.title,
+                href: `/services/${service.slug}`,
+              }))}
+            />
             <main className="site-main">{children}</main>
             <SiteFooter />
             <FloatingActions />
