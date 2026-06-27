@@ -4,3 +4,8 @@ dist/
 out/
 .env
 .env.local
+# Cloudflare Workers / OpenNext artifacts
+.open-next/
+.wrangler/
+.dev.vars
+.dev.vars.*

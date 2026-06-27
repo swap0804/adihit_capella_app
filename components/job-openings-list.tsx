@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { ArrowRight, BadgeInfo, BriefcaseBusiness, Building2, Clock3, MapPin, CircleDot } from 'lucide-react';
+import { ArrowRight, BadgeInfo, BriefcaseBusiness, Building2, Clock3, CircleDot, MapPin } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 import type { JobCard } from '@/lib/types';
@@ -23,72 +23,53 @@ export function JobOpeningsList({ jobs, error }: JobOpeningsListProps) {
   }
 
   return (
-    <div className='space-y-4'>
-      {/* <div className="flex items-center gap-2 px-1">
+    <div className="space-y-4">
+      <div className="flex items-center gap-2 px-1">
         <CircleDot className="h-4 w-4 text-emerald-500" />
         <h2 className="text-lg font-semibold tracking-tight text-slate-900 sm:text-xl">
           Open Positions <span className="text-sm font-medium text-slate-500">({jobs.length})</span>
         </h2>
-      </div> */}
+      </div>
 
       {jobs.length === 0 ? (
-        <div className='rounded-[1.25rem] border border-slate-200 bg-white p-8 text-center text-sm text-slate-700 shadow-[0_8px_22px_rgba(15,23,42,0.05)]'>
+        <div className="rounded-[1.25rem] border border-slate-200 bg-white p-8 text-center text-sm text-slate-700 shadow-[0_8px_22px_rgba(15,23,42,0.05)]">
           No current openings available.
         </div>
       ) : (
-        <div className='space-y-3'>
+        <div className="space-y-3">
           {jobs.map((job) => (
             <article
               key={job.id}
-              className='rounded-[1rem] border border-slate-200 bg-white px-4 py-4 shadow-[0_8px_22px_rgba(15,23,42,0.04)] transition hover:border-sky-200 hover:shadow-[0_12px_28px_rgba(14,165,233,0.08)]'
+              className="rounded-[1rem] border border-slate-200 bg-white px-4 py-4 shadow-[0_8px_22px_rgba(15,23,42,0.04)] transition hover:border-sky-200 hover:shadow-[0_12px_28px_rgba(14,165,233,0.08)]"
             >
-              <div className='flex flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-6'>
-                <div className='min-w-0 flex-1'>
-                  <div className='flex flex-wrap items-center gap-2'>
-                    <h3 className='text-base font-semibold tracking-tight text-slate-900 sm:text-[1.05rem]'>
+              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-6">
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-base font-semibold tracking-tight text-slate-900 sm:text-[1.05rem]">
                       {job.title}
                     </h3>
-                    {/* <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
+                    <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
                       Open
-                    </span> */}
+                    </span>
                   </div>
 
-                  <p className='mt-1.5 max-w-4xl text-sm leading-6 text-slate-600'>
-                    {job.summary}
-                  </p>
+                  <p className="mt-1.5 max-w-4xl text-sm leading-6 text-slate-600">{job.summary}</p>
 
-                  <div className='mt-3 flex flex-wrap items-center gap-2 text-[11px] font-medium text-slate-600'>
-                    <InfoItem
-                      icon={<Building2 className='h-3.5 w-3.5' />}
-                      label={job.department}
-                    />
-                    <InfoItem
-                      icon={<MapPin className='h-3.5 w-3.5' />}
-                      label={job.location}
-                    />
-                    <InfoItem
-                      icon={<BriefcaseBusiness className='h-3.5 w-3.5' />}
-                      label={job.employmentType}
-                    />
-                    <InfoItem
-                      icon={<Clock3 className='h-3.5 w-3.5' />}
-                      label={job.experience}
-                    />
-                    {job.salaryRange ? (
-                      <InfoItem
-                        icon={<BadgeInfo className='h-3.5 w-3.5' />}
-                        label={job.salaryRange}
-                      />
-                    ) : null}
+                  <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-medium text-slate-600">
+                    <InfoItem icon={<Building2 className="h-3.5 w-3.5" />} label={job.department} />
+                    <InfoItem icon={<MapPin className="h-3.5 w-3.5" />} label={job.location} />
+                    <InfoItem icon={<BriefcaseBusiness className="h-3.5 w-3.5" />} label={job.employmentType} />
+                    <InfoItem icon={<Clock3 className="h-3.5 w-3.5" />} label={job.experience} />
+                    {job.salaryRange ? <InfoItem icon={<BadgeInfo className="h-3.5 w-3.5" />} label={job.salaryRange} /> : null}
                   </div>
                 </div>
 
                 <Link
                   href={`/careers/details/${job.id}`}
-                  className='inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-[0.75rem] bg-[#12264a] px-4 py-2.5 text-sm font-semibold  transition hover:bg-[hsl(218,66%,15%)]  !text-white'
+                  className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-[0.75rem] bg-[#12264a] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#0d1f3f]"
                 >
                   Read More
-                  <ArrowRight className='h-4 w-4' />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </article>

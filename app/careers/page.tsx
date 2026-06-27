@@ -1,8 +1,10 @@
-﻿import Image from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
-import { JobOpeningsBrowser } from '@/components/job-openings-browser';
+import { JobOpeningsList } from '@/components/job-openings-list';
+import { fetchJobs, mapJobsToCards } from '@/lib/job-api';
+import type { JobCard } from '@/lib/types';
 import { createMetadata } from '@/lib/seo';
 
 export const metadata = createMetadata({
@@ -11,7 +13,19 @@ export const metadata = createMetadata({
   path: '/careers',
 });
 
-export default function CareersPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function CareersPage() {
+  let error = '';
+  let jobs: JobCard[] = [];
+
+  try {
+    const payload = await fetchJobs();
+    jobs = mapJobsToCards((payload.data ?? []).filter((job) => job.isActive));
+  } catch {
+    error = 'Unable to load live openings right now.';
+  }
+
   return (
     <div className="space-y-10 bg-sky-50 pb-12 text-slate-900">
       <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8 lg:pt-12">
@@ -55,14 +69,6 @@ export default function CareersPage() {
                 className="object-cover opacity-90"
               />
               <div className="absolute inset-0 bg-sky-900/20" />
-              {/* <div className="absolute inset-x-5 bottom-5 rounded-[2rem] border border-sky-100 bg-sky-900/85 p-5 shadow-[0_16px_45px_rgba(15,23,42,0.18)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-200">
-                  Current Open Positions
-                </p>
-                <p className="mt-3 text-sm leading-7 text-white">
-                  Every role shown below is already open.
-                </p>
-              </div> */}
             </div>
           </div>
         </div>
@@ -77,7 +83,7 @@ export default function CareersPage() {
       </section>
 
       <section id="current-openings" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <JobOpeningsBrowser />
+        <JobOpeningsList jobs={jobs} error={error} />
       </section>
     </div>
   );
