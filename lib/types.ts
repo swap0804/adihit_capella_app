@@ -151,6 +151,61 @@ export type CareerOpening = {
   responsibilities: string[];
 };
 
+export type JobEmploymentType =
+  | 'Full-time'
+  | 'Part-time'
+  | 'Contract'
+  | 'Internship'
+  | 'Temporary'
+  | 'Remote'
+  | 'Hybrid';
+
+export type BackendJob = {
+  _id: string;
+  jobTitle: string;
+  department: string;
+  jobDescription: string;
+  rolesAndResponsibilities: string[];
+  requiredQualifications: string[];
+  skillsRequired: string[];
+  location: string;
+  employmentType: JobEmploymentType;
+  experience: string;
+  salaryRange?: string | null;
+  openings: number;
+  applicationDeadline?: string | null;
+  isActive: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+export type JobCard = {
+  id: string;
+  title: string;
+  department: string;
+  location: string;
+  employmentType: JobEmploymentType;
+  experience: string;
+  salaryRange?: string | null;
+  summary: string;
+  openings: number;
+  applicationDeadline?: string | null;
+};
+
+export type JobApplicationFormValues = {
+  fullName: string;
+  mobileNumber: string;
+  email: string;
+  totalExperience: string;
+  relevantExperience: string;
+  currentCTC: string;
+  expectedCTC: string;
+  noticePeriod: string;
+  currentLocation: string;
+  willingToRelocate: boolean;
+  linkedinProfile: string;
+};
+
 export type OfficeLocation = {
   city: string;
   address: string;

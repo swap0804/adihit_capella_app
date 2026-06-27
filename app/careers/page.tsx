@@ -1,157 +1,84 @@
-import Link from "next/link";
-import { ArrowRight, PhoneCall } from "lucide-react";
+﻿import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
-import { PageHero } from "@/components/page-hero";
-import { PlaceholderMedia } from "@/components/placeholder-media";
-import { Reveal } from "@/components/reveal";
-import { SectionHeading } from "@/components/section-heading";
-import { createMetadata } from "@/lib/seo";
-import { careerBenefits, careerCards, officeGallery } from "@/lib/content";
+import { JobOpeningsBrowser } from '@/components/job-openings-browser';
+import { createMetadata } from '@/lib/seo';
 
 export const metadata = createMetadata({
-  title: "Careers",
-  description:
-    "Explore careers at Adihit Capella including openings, articleship, work culture, and learning opportunities.",
-  path: "/careers",
+  title: 'Careers',
+  description: 'Explore live job openings',
+  path: '/careers',
 });
 
 export default function CareersPage() {
   return (
-    <>
-      <PageHero
-        eyebrow="Careers"
-        title="A modern careers experience for professionals, students, and future collaborators."
-        description="This hub gives you space to present culture, articleship, openings, and direct contact pathways in one polished flow."
-        cta={{ label: "See openings", href: "/careers/openings" }}
-        secondaryCta={{ label: "Explore articleship", href: "/careers/articleship" }}
-        mediaLabel="Careers banner"
-      />
-
-      <section className="section-shell">
-        <SectionHeading
-          eyebrow="Top options"
-          title="Three clear entry points for different talent journeys."
-          description="This card row follows the reference structure while staying flexible enough for later copy, icons, and final visual styling."
-        />
-        <div className="grid gap-4 md:grid-cols-3">
-          {careerCards.map((card, index) => (
-            <Reveal key={card.title} delay={index * 70}>
-              <Link
-                href={card.cta.href}
-                className={`surface-card block h-full p-5 transition hover:-translate-y-1 ${
-                  card.title === "Call Now"
-                    ? "border-[rgba(255,107,129,0.35)]"
-                    : ""
-                }`}
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-2xl font-semibold text-white">
-                    {card.title}
-                  </h3>
-                  {card.title === "Call Now" ? (
-                    <PhoneCall className="h-5 w-5 text-[var(--danger)]" />
-                  ) : (
-                    <ArrowRight className="h-5 w-5 text-[var(--brand)]" />
-                  )}
-                </div>
-                <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
-                  {card.description}
-                </p>
-                <span className="card-read-more mt-5 inline-flex items-center gap-2 text-sm font-medium">
-                  Read more
+    <div className="space-y-10 bg-sky-50 pb-12 text-slate-900">
+      <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8 lg:pt-12">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-sky-200 bg-sky-700 shadow-[0_24px_80px_rgba(14,165,233,0.16)]">
+          <div className="relative grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="relative z-10 p-6 sm:p-10 lg:p-14">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-sky-600 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white shadow-sm">
+                <Sparkles className="h-4 w-4" />
+                Join Our Team
+              </span>
+              {/* <h1 className="mt-6 max-w-2xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Join Our Team
+              </h1> */}
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-sky-100">
+                Explore current openings, read the role details, and apply from a clean, blue-sky and white careers
+                experience.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href="#current-openings"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-sky-800 shadow-[0_16px_40px_rgba(15,23,42,0.12)] transition hover:translate-y-[-1px]"
+                >
+                  View Openings
                   <ArrowRight className="h-4 w-4" />
-                </span>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section id="life-at-adihit" className="section-shell">
-        <Reveal>
-          <div className="surface-card overflow-hidden p-4 md:p-6">
-            <PlaceholderMedia
-              label="Working at Adihit Capella banner"
-              detail="Use a wide culture image, leadership visual, or office collage in this strip."
-              heightClassName="min-h-[280px]"
-            />
-          </div>
-        </Reveal>
-      </section>
-
-      <section className="section-shell">
-        <div className="hero-grid items-start">
-          <Reveal>
-            <PlaceholderMedia
-              label="Life at Adihit Capella video or image"
-              detail="Embed a YouTube video here later or use an office story visual."
-              heightClassName="min-h-[360px]"
-            />
-          </Reveal>
-          <Reveal delay={100}>
-            <div className="surface-card h-full p-6 md:p-8">
-              <SectionHeading
-                eyebrow="Life at Adihit Capella"
-                title="Show the culture behind the consulting work."
-                description="This panel is ready for your real employer brand story, team philosophy, and a stronger message around learning and growth."
-              />
-              <div className="grid gap-4 md:grid-cols-3">
-                {careerBenefits.map((benefit) => (
-                  <div key={benefit.title} className="surface-card-muted p-4">
-                    <h3 className="text-base font-semibold text-white">
-                      {benefit.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
-                      {benefit.description}
-                    </p>
-                  </div>
-                ))}
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500"
+                >
+                  Talk to Hiring Team
+                </Link>
               </div>
             </div>
-          </Reveal>
-        </div>
-      </section>
 
-      <section className="section-shell">
-        <Reveal>
-          <div className="surface-card mx-auto max-w-3xl p-6 text-center md:p-8">
-            <span className="eyebrow">Work with us</span>
-            <h2 className="mt-5 text-3xl font-semibold text-white md:text-4xl">
-              Build a career around real advisory exposure and strong client communication.
-            </h2>
-            <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
-              Use this centered block for a stronger employer message, direct
-              application CTA, or firm culture pitch.
-            </p>
-            <Link
-              href="/careers/openings"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--brand),var(--accent))] px-5 py-3 font-semibold text-slate-950"
-            >
-              Explore more
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </Reveal>
-      </section>
-
-      <section className="section-shell">
-        <SectionHeading
-          eyebrow="Life at office"
-          title="A grid-ready gallery for events, training, culture, and team moments."
-          description="These placeholders can later become a more visual office story without any layout changes."
-        />
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {officeGallery.map((item, index) => (
-            <Reveal key={item} delay={index * 60}>
-              <PlaceholderMedia
-                label={item}
-                detail="Gallery image placeholder"
-                heightClassName="min-h-[220px]"
+            <div className="relative min-h-[320px] lg:min-h-[460px] bg-sky-900">
+              <Image
+                src="/images/media/accounting-and-bookkeeping.jpg"
+                alt="Careers banner"
+                fill
+                priority
+                className="object-cover opacity-90"
               />
-            </Reveal>
-          ))}
+              <div className="absolute inset-0 bg-sky-900/20" />
+              {/* <div className="absolute inset-x-5 bottom-5 rounded-[2rem] border border-sky-100 bg-sky-900/85 p-5 shadow-[0_16px_45px_rgba(15,23,42,0.18)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-200">
+                  Current Open Positions
+                </p>
+                <p className="mt-3 text-sm leading-7 text-white">
+                  Every role shown below is already open.
+                </p>
+              </div> */}
+            </div>
+          </div>
         </div>
       </section>
-    </>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-800">
+            Current Open Positions
+          </p>
+        </div>
+      </section>
+
+      <section id="current-openings" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <JobOpeningsBrowser />
+      </section>
+    </div>
   );
 }

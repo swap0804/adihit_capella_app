@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import "react-toastify/dist/ReactToastify.css";
 
 import "@/app/globals.css";
 import { FloatingActions } from "@/components/floating-actions";
@@ -7,6 +8,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ToastProvider } from "@/components/toast-provider";
 import { serviceCategories } from "@/lib/content";
 import { createOrganizationSchema } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
@@ -68,6 +70,7 @@ export default function RootLayout({
             <SiteFooter />
             <FloatingActions />
           </div>
+          <ToastProvider />
         </ThemeProvider>
       </body>
     </html>
