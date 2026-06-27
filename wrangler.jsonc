@@ -6,12 +6,15 @@
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "vars": {
     "NEXT_PUBLIC_API_BASE_URL": "https://adihit-capella-api.fly.dev",
-    "NEXT_PUBLIC_GOOGLE_SHEETS_WEB_APP_URL": "https://script.google.com/macros/s/AKfycbwWlqTOmIM6IEloh8_TAlMTZi4Xi5btuoNP4bhVndjjdaG1VDdyJMZj-VGNdEMnx39CsQ/exec",
-    "NEXT_PUBLIC_GOOGLE_MAPS_EMBED_API_KEY": "AIzaSyDjy3mfnGFJqOMGtvGBb5j8I9xL0g97NEg",
-    "NEXT_PUBLIC_GOOGLE_MAPS_PLACE_ID": "ChIJgd4ftBO_5zsRwTlWEoEdF1A",
   },
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS",
+  },
+  "observability": {
+    "logs": {
+      "enabled": false,
+      "invocation_logs": true,
+    },
   },
 }
