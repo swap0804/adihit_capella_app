@@ -4,9 +4,8 @@
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-06-27",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "vars": {
-    "NEXT_PUBLIC_API_BASE_URL": "https://adihit-capella-api.fly.dev",
-  },
+  "workers_dev": true,
+  "preview_urls": true,
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS",
@@ -14,7 +13,13 @@
   "observability": {
     "logs": {
       "enabled": false,
-      "invocation_logs": true,
-    },
+      "invocation_logs": true
+    }
   },
+  "routes": [
+    {
+      "pattern": "app.adihitcapella.com",
+      "custom_domain": true,
+    },
+  ],
 }
