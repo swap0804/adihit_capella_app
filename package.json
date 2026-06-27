@@ -4,12 +4,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:static": "npm run cf:build",
+    "build:static": "npm run build && node scripts/stage-export.mjs",
     "start": "next start",
-    "lint": "eslint .",
-    "cf:build": "opennextjs-cloudflare build",
-    "cf:preview": "opennextjs-cloudflare build && wrangler dev",
-    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
+    "lint": "eslint ."
   },
   "keywords": [
     "adihit capella",
@@ -35,9 +32,5 @@
     "react-toastify": "^11.1.0",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2"
-  },
-  "devDependencies": {
-    "@opennextjs/cloudflare": "^1.20.1",
-    "wrangler": "^4.105.0"
   }
 }
