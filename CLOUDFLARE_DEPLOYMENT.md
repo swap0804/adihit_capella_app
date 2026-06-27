@@ -40,6 +40,16 @@ npm run cf:build
 npm run cf:deploy
 ```
 
+## Cloudflare dashboard build command
+
+If your Cloudflare project is using a build command in the dashboard, set it to:
+
+```bash
+npm run cf:build
+```
+
+Do not use the old static-export staging script for this Worker deployment.
+
 ## Common issues
 
 - If the careers page cannot load jobs, confirm `NEXT_PUBLIC_API_BASE_URL` points to the deployed backend.
