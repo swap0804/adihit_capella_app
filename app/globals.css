@@ -1069,6 +1069,10 @@ select {
   transition: color 220ms ease, transform 220ms ease;
 }
 
+.job-card-read-more {
+  color: #ffffff !important;
+}
+
 .surface-card:hover .card-read-more,
 .surface-card:focus-visible .card-read-more,
 .card-read-more:hover,

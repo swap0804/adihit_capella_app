@@ -21,6 +21,10 @@ type ApplicationResponse = {
 
 const DEFAULT_API_BASE_URL = 'http://localhost:8000';
 
+function logJobApi(event: string, details: Record<string, unknown>) {
+  console.log(`[job-api] ${event}`, details);
+}
+
 export function getApiBaseUrl() {
   return (
     process.env.NEXT_PUBLIC_API_BASE_URL?.trim().replace(/\/+$/, '') ||
@@ -65,35 +69,101 @@ async function parseJsonResponse<T>(response: Response): Promise<T> {
 }
 
 export async function fetchJobs(signal?: AbortSignal) {
-  const response = await fetch(buildApiUrl('/api/jobs'), {
+  const url = buildApiUrl('/api/jobs');
+  const startedAt = Date.now();
+
+  logJobApi('request:start', {
+    action: 'fetchJobs',
     method: 'GET',
-    cache: 'no-store',
-    signal,
+    url,
   });
 
-  const payload = await parseJsonResponse<JobsListResponse>(response);
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      cache: 'no-store',
+      signal,
+    });
 
-  if (!response.ok || !payload.success) {
-    throw new Error('Failed to load jobs.');
+    const payload = await parseJsonResponse<JobsListResponse>(response);
+
+    logJobApi('request:complete', {
+      action: 'fetchJobs',
+      method: 'GET',
+      url,
+      status: response.status,
+      ok: response.ok,
+      durationMs: Date.now() - startedAt,
+      total: payload.total,
+      itemsReturned: payload.data?.length ?? 0,
+    });
+
+    if (!response.ok || !payload.success) {
+      throw new Error('Failed to load jobs.');
+    }
+
+    return payload;
+  } catch (error) {
+    logJobApi('request:error', {
+      action: 'fetchJobs',
+      method: 'GET',
+      url,
+      durationMs: Date.now() - startedAt,
+      error: error instanceof Error ? error.message : String(error),
+    });
+
+    throw error;
   }
-
-  return payload;
 }
 
 export async function fetchJobById(jobId: string, signal?: AbortSignal) {
-  const response = await fetch(buildApiUrl(`/api/jobs/${jobId}`), {
+  const url = buildApiUrl(`/api/jobs/${jobId}`);
+  const startedAt = Date.now();
+
+  logJobApi('request:start', {
+    action: 'fetchJobById',
     method: 'GET',
-    cache: 'no-store',
-    signal,
+    url,
+    jobId,
   });
 
-  const payload = await parseJsonResponse<JobDetailResponse>(response);
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      cache: 'no-store',
+      signal,
+    });
 
-  if (!response.ok || !payload.success || !payload.data) {
-    throw new Error(payload.message || 'Failed to load the selected job.');
+    const payload = await parseJsonResponse<JobDetailResponse>(response);
+
+    logJobApi('request:complete', {
+      action: 'fetchJobById',
+      method: 'GET',
+      url,
+      jobId,
+      status: response.status,
+      ok: response.ok,
+      durationMs: Date.now() - startedAt,
+      found: Boolean(payload.data),
+    });
+
+    if (!response.ok || !payload.success || !payload.data) {
+      throw new Error(payload.message || 'Failed to load the selected job.');
+    }
+
+    return payload.data;
+  } catch (error) {
+    logJobApi('request:error', {
+      action: 'fetchJobById',
+      method: 'GET',
+      url,
+      jobId,
+      durationMs: Date.now() - startedAt,
+      error: error instanceof Error ? error.message : String(error),
+    });
+
+    throw error;
   }
-
-  return payload.data;
 }
 
 export async function submitJobApplication(
@@ -120,16 +190,54 @@ export async function submitJobApplication(
 
   formData.append('resume', resume);
 
-  const response = await fetch(buildApiUrl(`/api/jobs/${jobId}/apply`), {
+  const url = buildApiUrl(`/api/jobs/${jobId}/apply`);
+  const startedAt = Date.now();
+
+  logJobApi('request:start', {
+    action: 'submitJobApplication',
     method: 'POST',
-    body: formData,
+    url,
+    jobId,
+    fields: Object.keys(values),
+    resumeName: resume.name,
+    resumeType: resume.type,
+    resumeSize: resume.size,
   });
 
-  const payload = (await response.json().catch(() => null)) as ApplicationResponse | null;
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: formData,
+    });
 
-  if (!response.ok || !payload?.success) {
-    throw new Error(payload?.message || 'Failed to submit application.');
+    const payload = (await response.json().catch(() => null)) as ApplicationResponse | null;
+
+    logJobApi('request:complete', {
+      action: 'submitJobApplication',
+      method: 'POST',
+      url,
+      jobId,
+      status: response.status,
+      ok: response.ok,
+      durationMs: Date.now() - startedAt,
+      success: Boolean(payload?.success),
+    });
+
+    if (!response.ok || !payload?.success) {
+      throw new Error(payload?.message || 'Failed to submit application.');
+    }
+
+    return payload;
+  } catch (error) {
+    logJobApi('request:error', {
+      action: 'submitJobApplication',
+      method: 'POST',
+      url,
+      jobId,
+      durationMs: Date.now() - startedAt,
+      error: error instanceof Error ? error.message : String(error),
+    });
+
+    throw error;
   }
-
-  return payload;
 }
