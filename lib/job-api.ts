@@ -20,16 +20,32 @@ type ApplicationResponse = {
 };
 
 const DEFAULT_API_BASE_URL = 'http://localhost:8000';
+let didLogBaseUrl = false;
 
 function logJobApi(event: string, details: Record<string, unknown>) {
   console.log(`[job-api] ${event}`, details);
 }
 
 export function getApiBaseUrl() {
-  return (
-    process.env.NEXT_PUBLIC_API_BASE_URL?.trim().replace(/\/+$/, '') ||
-    DEFAULT_API_BASE_URL
-  );
+  const rawValue = process.env.NEXT_PUBLIC_API_BASE_URL?.trim().replace(/\/+$/, '');
+  const resolvedValue = rawValue || (process.env.NODE_ENV === 'development' ? DEFAULT_API_BASE_URL : '');
+
+  if (!didLogBaseUrl) {
+    didLogBaseUrl = true;
+    logJobApi('base-url', {
+      nodeEnv: process.env.NODE_ENV,
+      runtime: typeof window === 'undefined' ? 'server' : 'client',
+      rawEnv: process.env.NEXT_PUBLIC_API_BASE_URL ?? null,
+      trimmedEnv: rawValue ?? null,
+      resolved: resolvedValue || null,
+    });
+  }
+
+  if (!resolvedValue) {
+    console.warn('[job-api] NEXT_PUBLIC_API_BASE_URL is missing in production');
+  }
+
+  return resolvedValue;
 }
 
 export function buildApiUrl(path: string) {

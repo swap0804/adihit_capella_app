@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { ArrowRight, BadgeInfo, BriefcaseBusiness, Building2, Clock3, CircleDot, MapPin } from 'lucide-react';
+import { ArrowRight, BadgeInfo, BriefcaseBusiness, Building2, Clock3, MapPin } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 import type { JobCard } from '@/lib/types';
